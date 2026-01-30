@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import { 
   Code, Database, Server, Terminal, Shield, 
-  Cpu, Globe, Lock, Activity
+  Cpu, Globe, Lock, Activity, Cloud, Coffee,FileCode,Atom
 } from "lucide-react";
 import { type Skill } from "@shared/schema";
 
 const IconMap: Record<string, React.ElementType> = {
-  Code, Database, Server, Terminal, Shield, Cpu, Globe, Lock, Activity
+  Code, Database, Server, Terminal, Shield, Cpu, Globe, Lock, Activity, Cloud, Coffee,FileCode,Atom
 };
 
 interface SkillCardProps {

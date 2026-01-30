@@ -18,59 +18,41 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       className="group relative rounded-xl overflow-hidden bg-card border border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl"
     >
       {/* Image Container */}
-      <div className="relative h-48 overflow-hidden bg-muted">
+      <div className="relative w-full bg-muted">
         {project.imageUrl ? (
           <img 
             src={project.imageUrl} 
             alt={project.title} 
-            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 filter brightness-75 group-hover:brightness-100"
+            className="w-full h-auto max-h-96 object-contain transform group-hover:scale-105 transition-transform duration-700 filter brightness-75 group-hover:brightness-100 rounded-t-xl"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-secondary/30">
+          <div className="w-full h-48 flex items-center justify-center bg-secondary/30">
             <div className="font-mono text-4xl font-bold text-muted-foreground/20">
               {project.title.substring(0, 2).toUpperCase()}
             </div>
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent opacity-80" />
+        <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent opacity-70" />
       </div>
 
       {/* Content */}
-      <div className="p-6 relative z-10 -mt-12">
+      <div className="p-6 relative z-10 -mt-6 flex flex-col">
         <div className="flex justify-between items-start mb-4">
           <h3 className="text-xl font-bold font-mono text-foreground group-hover:text-primary transition-colors">
             {project.title}
           </h3>
           <div className="flex gap-2">
-            {project.githubLink && (
-              <a 
-                href={project.githubLink} 
-                target="_blank" 
-                rel="noreferrer"
-                className="p-2 rounded-full bg-secondary/80 hover:bg-primary hover:text-black transition-colors"
-                title="View Source"
-              >
-                <Github className="w-4 h-4" />
-              </a>
-            )}
-            {project.link && (
-              <a 
-                href={project.link} 
-                target="_blank" 
-                rel="noreferrer"
-                className="p-2 rounded-full bg-secondary/80 hover:bg-primary hover:text-black transition-colors"
-                title="Live Demo"
-              >
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
-            )}
+            
+            
           </div>
         </div>
 
-        <p className="text-muted-foreground text-sm mb-6 line-clamp-3">
+        {/* Full Description */}
+        <p className="text-muted-foreground text-sm mb-6 whitespace-pre-wrap">
           {project.description}
         </p>
 
+        {/* Technologies */}
         <div className="flex flex-wrap gap-2 mt-auto">
           {project.technologies?.map((tech, i) => (
             <Badge 
