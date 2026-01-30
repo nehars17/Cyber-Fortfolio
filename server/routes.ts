@@ -5,9 +5,6 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
+  // Static site - no API routes needed
   return httpServer;
-}
-
-export async function seedDatabase() {
-  // Static site, no database needed
 }

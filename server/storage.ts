@@ -1,5 +1,5 @@
 export interface IStorage {
-  // Empty for static site
+  // Static site - no storage needed
 }
 
 export class MemStorage implements IStorage {}
