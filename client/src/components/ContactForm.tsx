@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { insertMessageSchema, type InsertMessage } from "@shared/schema";
+import { z } from "zod";
 import { useSendMessage } from "@/hooks/use-portfolio";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -17,12 +17,20 @@ import {
 } from "@/components/ui/form";
 import { Send, Terminal } from "lucide-react";
 
+const contactSchema = z.object({
+  name: z.string().min(2, "Name is required"),
+  email: z.string().email("Invalid email address"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+});
+
+type ContactValues = z.infer<typeof contactSchema>;
+
 export function ContactForm() {
   const { toast } = useToast();
   const sendMessageMutation = useSendMessage();
 
-  const form = useForm<InsertMessage>({
-    resolver: zodResolver(insertMessageSchema),
+  const form = useForm<ContactValues>({
+    resolver: zodResolver(contactSchema),
     defaultValues: {
       name: "",
       email: "",
@@ -30,7 +38,7 @@ export function ContactForm() {
     },
   });
 
-  const onSubmit = (data: InsertMessage) => {
+  const onSubmit = (data: ContactValues) => {
     sendMessageMutation.mutate(data, {
       onSuccess: () => {
         toast({
@@ -40,7 +48,7 @@ export function ContactForm() {
         });
         form.reset();
       },
-      onError: (error) => {
+      onError: (error: any) => {
         toast({
           title: "Transmission Failed",
           description: error.message,

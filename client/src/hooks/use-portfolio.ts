@@ -1,74 +1,29 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { api, type InsertMessage } from "@shared/routes";
-import { 
-  type Skill, 
-  type Project, 
-  type Certification, 
-  type Testimonial 
-} from "@shared/schema";
+import { useMutation } from "@tanstack/react-query";
+import { skills, projects, certifications } from "@/lib/data";
 
 export function useSkills() {
-  return useQuery({
-    queryKey: [api.skills.list.path],
-    queryFn: async () => {
-      const res = await fetch(api.skills.list.path);
-      if (!res.ok) throw new Error("Failed to fetch skills");
-      return api.skills.list.responses[200].parse(await res.json());
-    },
-  });
+  return { data: skills, isLoading: false };
 }
 
 export function useProjects() {
-  return useQuery({
-    queryKey: [api.projects.list.path],
-    queryFn: async () => {
-      const res = await fetch(api.projects.list.path);
-      if (!res.ok) throw new Error("Failed to fetch projects");
-      return api.projects.list.responses[200].parse(await res.json());
-    },
-  });
+  return { data: projects, isLoading: false };
 }
 
 export function useCertifications() {
-  return useQuery({
-    queryKey: [api.certifications.list.path],
-    queryFn: async () => {
-      const res = await fetch(api.certifications.list.path);
-      if (!res.ok) throw new Error("Failed to fetch certifications");
-      return api.certifications.list.responses[200].parse(await res.json());
-    },
-  });
+  return { data: certifications, isLoading: false };
 }
 
 export function useTestimonials() {
-  return useQuery({
-    queryKey: [api.testimonials.list.path],
-    queryFn: async () => {
-      const res = await fetch(api.testimonials.list.path);
-      if (!res.ok) throw new Error("Failed to fetch testimonials");
-      return api.testimonials.list.responses[200].parse(await res.json());
-    },
-  });
+  return { data: [], isLoading: false };
 }
 
 export function useSendMessage() {
   return useMutation({
-    mutationFn: async (data: InsertMessage) => {
-      const validated = api.messages.create.input.parse(data);
-      const res = await fetch(api.messages.create.path, {
-        method: api.messages.create.method,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(validated),
-      });
-      
-      if (!res.ok) {
-        if (res.status === 400) {
-          const error = api.messages.create.responses[400].parse(await res.json());
-          throw new Error(error.message);
-        }
-        throw new Error("Failed to send message");
-      }
-      return api.messages.create.responses[201].parse(await res.json());
+    mutationFn: async (data: { name: string; email: string; message: string }) => {
+      console.log("Static mode: message intercepted:", data);
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 800));
+      return { success: true };
     },
   });
 }
