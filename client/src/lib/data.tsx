@@ -222,7 +222,7 @@ export const certifications: Certification[] = [
     issuer: "EC-Council",
     date: "2022",
     imageUrl: "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?auto=format&fit=crop&q=80&w=200",
-    pdf: "/src/assets/certs/ECC-CEH-Certificate.pdf"
+    pdf: "/assets/certs/ECC-CEH-Certificate.pdf"
   },
   {
     id: 2,
@@ -230,7 +230,7 @@ export const certifications: Certification[] = [
     issuer: "EC-Council",
     date: "2022",
     imageUrl: "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?auto=format&fit=crop&q=80&w=200",
-    pdf: "/src/assets/certs/ECC-CHFI-Certificate-ANSI.pdf"
+    pdf: "/assets/certs/ECC-CHFI-Certificate-ANSI.pdf"
   },
   {
     id: 3,
@@ -238,7 +238,7 @@ export const certifications: Certification[] = [
     issuer: "Amazon Web Services",
     date: "2025",
     imageUrl: "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?auto=format&fit=crop&q=80&w=200",
-    pdf: "/src/assets/certs/AWS Certified Solutions Architect - Associate.pdf"
+    pdf: "/assets/certs/AWS Certified Solutions Architect - Associate.pdf"
   },
   {
     id: 4,
@@ -246,7 +246,7 @@ export const certifications: Certification[] = [
     issuer: "Amazon Web Services",
     date: "2020",
     imageUrl: "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?auto=format&fit=crop&q=80&w=200",
-    pdf: "/src/assets/certs/AWS Certified Cloud Practitioner.pdf"
+    pdf: "/assets/certs/AWS Certified Cloud Practitioner.pdf"
   },
   {
     id: 5,
@@ -254,7 +254,7 @@ export const certifications: Certification[] = [
     issuer: 'Google',
     date: '2023',
     imageUrl: "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?auto=format&fit=crop&q=80&w=200",
-    pdf: "/src/assets/certs/Google Python Automation.pdf"
+    pdf: "/assets/certs/Google Python Automation.pdf"
   },
   {
     id: 6,
@@ -262,7 +262,7 @@ export const certifications: Certification[] = [
     issuer: 'Google',
     date: '2022',
     imageUrl: "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?auto=format&fit=crop&q=80&w=200",
-    pdf: "/src/assets/certs/Google IT Support.pdf"
+    pdf: "/assets/certs/Google IT Support.pdf"
   }
 ];
 
@@ -273,7 +273,7 @@ export const testimonials = [
     role: "Application Developer Intern",
     company: "Inland Revenue Authority of Singapore",
     text: "Neha contributed to our digital transformation project with professionalism and technical skill, quickly adapting to our enterprise environment.",
-    imageUrl: "/src/assets/testimonials/Accenture.pdf"
+    imageUrl: "/assets/testimonials/Accenture.pdf"
   },
   {
     id: 2,
@@ -281,6 +281,6 @@ export const testimonials = [
     role: "Cybersecurity Engineer (Intern)",
     company: "Defence Science and Technology Agency",
     text: "Her automation of Red Team operations using Infrastructure as Code was innovative and impactful for our security team.",
-    imageUrl: "/src/assets/testimonials/DSTA.pdf"
+    imageUrl: "/assets/testimonials/DSTA.pdf"
   },
 ];

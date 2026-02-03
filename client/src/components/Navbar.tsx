@@ -3,7 +3,7 @@ import { Shield, Menu, X, Terminal } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import resume from "@/assets/resume/Neha_Resume.pdf";
+import resume from "/assets/resume/Neha_Resume.pdf";
 
 const navItems = [
   { name: "About", to: "about" },
