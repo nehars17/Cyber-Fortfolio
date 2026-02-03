@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { skills, projects, certifications, experiences} from "@/lib/data";
+import { skills, projects, certifications, experiences, testimonials } from "@/lib/data";
 
 export function useSkills() {
   return { data: skills, isLoading: false };
@@ -18,7 +18,7 @@ export function useExperiences() {
 }
 
 export function useTestimonials() {
-  return { data: [], isLoading: false };
+  return { data: testimonials, isLoading: false };
 }
 
 export function useSendMessage() {

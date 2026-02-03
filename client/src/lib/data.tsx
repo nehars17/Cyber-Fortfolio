@@ -44,22 +44,38 @@ export interface Certification {
   issuer: string;
   date: string;
   imageUrl: string;
+  pdf?: string;
 }
 
 export const skills: Skill[] = [
-  { id: 1, category: "Programming", name: "Python", icon: "Code" },
-  { id: 2, category: "Programming", name: "Java", icon: "Coffee" },
-  { id: 3, category: "Programming", name: "PHP", icon: "FileCode" },
-  { id: 4, category: "Programming", name: "React.js", icon: "Atom" },
-  { id: 5, category: "Web Development", name: "Flask", icon: "Server" },
-  { id: 6, category: "Web Development", name: "Spring Boot", icon: "Server" },
-  { id: 7, category: "Database", name: "MySQL", icon: "Database" },
-  { id: 8, category: "OS & Admin", name: "Windows", icon: "Terminal" },
-  { id: 9, category: "OS & Admin", name: "Linux", icon: "Terminal" },
-  { id: 10, category: "Cloud", name: "AWS", icon: "Cloud" },
-  { id: 11, category: "Cloud", name: "Azure", icon: "Cloud" },
-  { id: 12, category: "Cybersecurity", name: "Red Team Operations", icon: "Shield" },
-  { id: 13, category: "Cybersecurity", name: "Blue Team Operations", icon: "Shield" }
+ { id: 1, category: "Programming", name: "Python", icon: "Code" },
+{ id: 2, category: "Programming", name: "Java", icon: "Coffee" },
+{ id: 3, category: "Programming", name: "PHP", icon: "FileCode" },
+{ id: 4, category: "Frontend", name: "React.js", icon: "Atom" },
+
+{ id: 5, category: "Backend", name: "Flask", icon: "Server" },
+{ id: 6, category: "Backend", name: "Spring Boot", icon: "Server" },
+
+{ id: 7, category: "Database", name: "MySQL", icon: "Database" },
+
+{ id: 8, category: "Operating Systems", name: "Windows Administration", icon: "Terminal" },
+{ id: 9, category: "Operating Systems", name: "Linux Administration", icon: "Terminal" },
+
+{ id: 10, category: "Cloud", name: "AWS (EC2, S3, IAM)", icon: "Cloud" },
+{ id: 11, category: "Cloud", name: "Azure (App Services, VM, AD)", icon: "Cloud" },
+
+{ id: 12, category: "Cybersecurity", name: "Red Team / Penetration Testing", icon: "Shield" },
+{ id: 13, category: "Cybersecurity", name: "Blue Team / Incident Response", icon: "Shield" },
+{ id: 14, category: "Cybersecurity", name: "Digital Forensics", icon: "Shield" },
+{ id: 15, category: "Cybersecurity", name: "Web Application Security", icon: "Shield" },
+
+{ id: 16, category: "Security Tools", name: "Burp Suite", icon: "Wrench" },
+{ id: 17, category: "Security Tools", name: "Wireshark", icon: "Radar" },
+{ id: 18, category: "Security Tools", name: "Metasploit", icon: "Bug" },
+
+{ id: 19, category: "Dev Tools", name: "Git & GitHub", icon: "GitBranch" },
+{ id: 20, category: "Dev Tools", name: "Docker", icon: "Box" },
+{ id: 21, category: "Dev Tools", name: "Postman", icon: "Send" },
 
 ];
 export const experiences: Experience[] = [
@@ -198,48 +214,73 @@ export const projects: Project[] = [
 ];
 
 
+
 export const certifications: Certification[] = [
   {
     id: 1,
     name: "Certified Ethical Hacker (CEH)",
     issuer: "EC-Council",
     date: "2022",
-    imageUrl: "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?auto=format&fit=crop&q=80&w=200"
+    imageUrl: "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?auto=format&fit=crop&q=80&w=200",
+    pdf: "/src/assets/certs/ECC-CEH-Certificate.pdf"
   },
   {
     id: 2,
     name: "Computer Hacking Forensic Investigator (CHFI)",
     issuer: "EC-Council",
     date: "2022",
-    imageUrl: "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?auto=format&fit=crop&q=80&w=200"
+    imageUrl: "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?auto=format&fit=crop&q=80&w=200",
+    pdf: "/src/assets/certs/ECC-CHFI-Certificate-ANSI.pdf"
   },
   {
     id: 3,
     name: "AWS Certified Solutions Architect – Associate",
     issuer: "Amazon Web Services",
     date: "2025",
-    imageUrl: "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?auto=format&fit=crop&q=80&w=200"
+    imageUrl: "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?auto=format&fit=crop&q=80&w=200",
+    pdf: "/src/assets/certs/AWS Certified Solutions Architect - Associate.pdf"
   },
   {
     id: 4,
     name: "AWS Certified Cloud Practitioner",
     issuer: "Amazon Web Services",
     date: "2020",
-    imageUrl: "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?auto=format&fit=crop&q=80&w=200"
+    imageUrl: "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?auto=format&fit=crop&q=80&w=200",
+    pdf: "/src/assets/certs/AWS Certified Cloud Practitioner.pdf"
   },
   {
     id: 5,
     name: 'Google IT Automation with Python Professional Certificate',
     issuer: 'Google',
     date: '2023',
-    imageUrl: "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?auto=format&fit=crop&q=80&w=200"
+    imageUrl: "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?auto=format&fit=crop&q=80&w=200",
+    pdf: "/src/assets/certs/Google Python Automation.pdf"
   },
   {
     id: 6,
     name: 'Google IT Support Professional Certificate',
     issuer: 'Google',
     date: '2022',
-    imageUrl: "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?auto=format&fit=crop&q=80&w=200"
+    imageUrl: "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?auto=format&fit=crop&q=80&w=200",
+    pdf: "/src/assets/certs/Google IT Support.pdf"
   }
+];
 
+export const testimonials = [
+  {
+    id: 1,
+    name: "Accenture",
+    role: "Application Developer Intern",
+    company: "Inland Revenue Authority of Singapore",
+    text: "Neha contributed to our digital transformation project with professionalism and technical skill, quickly adapting to our enterprise environment.",
+    imageUrl: "/src/assets/testimonials/Accenture.pdf"
+  },
+  {
+    id: 2,
+    name: "DSTA",
+    role: "Cybersecurity Engineer (Intern)",
+    company: "Defence Science and Technology Agency",
+    text: "Her automation of Red Team operations using Infrastructure as Code was innovative and impactful for our security team.",
+    imageUrl: "/src/assets/testimonials/DSTA.pdf"
+  },
 ];

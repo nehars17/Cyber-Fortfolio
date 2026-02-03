@@ -9,14 +9,20 @@ import { SkillCard } from "@/components/SkillCard";
 import { ProjectCard } from "@/components/ProjectCard";
 import { CertificationCard } from "@/components/CertificationCard";
 import { ContactForm } from "@/components/ContactForm";
+
 import { Button } from "@/components/ui/button";
+import { Toaster } from "@/components/ui/toaster";
+import { toast } from "@/hooks/use-toast";
 
 import {
   useSkills,
   useProjects,
   useCertifications,
-  useExperiences
+  useExperiences,
+  useTestimonials
 } from "@/hooks/use-portfolio";
+
+import { TestimonialCard } from "@/components/TestimonialCard";
 
 export default function Home() {
   const { data: skills, isLoading: skillsLoading } = useSkills();
@@ -57,7 +63,7 @@ export default function Home() {
             <div className="text-xl md:text-2xl text-muted-foreground font-mono h-16 md:h-20 mb-8">
               <TypeAnimation
                 sequence={[
-                  'Digital Forensics Analyst',
+                  'Cybersecurity Analyst',
                   2000,
                   'Security Researcher',
                   2000,
@@ -101,7 +107,10 @@ export default function Home() {
         >
           <ChevronDown className="w-8 h-8" />
         </motion.div>
+
       </section>
+
+     
 
       {/* About Section */}
       <section id="about" className="py-24 relative bg-card/30 border-y border-border/30">
@@ -213,6 +222,7 @@ export default function Home() {
         </div>
       </section>
 
+
       {/* Experience Section */}
       <section id="experience" className="py-24 bg-secondary/10 border-y border-border/30">
         <div className="container px-4">
@@ -284,6 +294,31 @@ export default function Home() {
               ))}
             </div>
           )}
+        </div>
+      </section>
+      
+
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-24 bg-background border-y border-border/30">
+        <div className="container px-4 max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-12 text-center"
+          >
+            <h2 className="text-3xl font-bold mb-4 font-mono">
+              <span className="text-primary">03b.</span> Testimonials
+            </h2>
+            <p className="text-muted-foreground max-w-xl mx-auto">
+              What others say about my work and impact.
+            </p>
+          </motion.div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {useTestimonials().data.map((testimonial, index) => (
+              <TestimonialCard key={testimonial.id} testimonial={testimonial} index={index} />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -390,7 +425,13 @@ export default function Home() {
 
               {/* Copy Email Button */}
               <button
-                onClick={() => navigator.clipboard.writeText("nehars.rs@gmail.com")}
+                onClick={() => {
+                  navigator.clipboard.writeText("nehars.rs@gmail.com");
+                  toast({
+                    title: "Email copied!",
+                    description: "nehars.rs@gmail.com has been copied to your clipboard.",
+                  });
+                }}
                 className="inline-block px-6 py-3 bg-secondary text-primary font-mono font-semibold rounded-lg hover:bg-primary hover:text-white transition-colors"
               >
                 Copy Email
@@ -404,6 +445,7 @@ export default function Home() {
 
 
 
+      <Toaster />
       <Footer />
     </div>
   );

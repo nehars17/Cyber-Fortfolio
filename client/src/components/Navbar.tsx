@@ -3,10 +3,12 @@ import { Shield, Menu, X, Terminal } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import resume from "@/assets/resume/Neha_Resume.pdf";
 
 const navItems = [
   { name: "About", to: "about" },
   { name: "Skills", to: "skills" },
+  { name: "Experience", to: "experience" },
   { name: "Projects", to: "projects" },
   { name: "Certifications", to: "certifications" },
   { name: "Contact", to: "contact" },
@@ -26,11 +28,10 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent ${
-        scrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent ${scrolled
           ? "bg-background/80 backdrop-blur-md border-primary/20 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -47,7 +48,7 @@ export function Navbar() {
               </span>
             </Link>
           </div>
-          
+
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => (
@@ -62,18 +63,18 @@ export function Navbar() {
                   {item.name}
                 </Link>
               ))}
-              <Button 
-                variant="outline" 
-                size="sm" 
+              <Button
+                variant="outline"
+                size="sm"
                 className="border-primary text-primary hover:bg-primary/10 hover:text-accent font-mono"
-                onClick={() => window.open("https://89076a58-8d9f-4d3b-b70c-53c2327c6962.filesusr.com/ugd/16dab6_0e4749e38d6349c2b6080c8d85d24092.pdf", "_blank")}
+                onClick={() => window.open(resume, "_blank")}
               >
                 <Terminal className="w-4 h-4 mr-2" />
                 Resume
               </Button>
             </div>
           </div>
-          
+
           <div className="-mr-2 flex md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -107,14 +108,15 @@ export function Navbar() {
                   {item.name}
                 </Link>
               ))}
-              <a 
-                href="https://89076a58-8d9f-4d3b-b70c-53c2327c6962.filesusr.com/ugd/16dab6_0e4749e38d6349c2b6080c8d85d24092.pdf" 
-                target="_blank" 
+              <a
+                href={resume}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:text-accent hover:bg-primary/10 block px-3 py-2 rounded-md text-base font-mono font-medium cursor-pointer border border-primary/30 mt-4 text-center"
               >
                 Download Resume
               </a>
+
             </div>
           </motion.div>
         )}
