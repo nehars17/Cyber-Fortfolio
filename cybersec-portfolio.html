@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neha RS | Cybersecurity & Software Engineer</title>
+    <meta name="description"
+        content="Neha RS — Cybersecurity student at SMU specialising in AI/LLM security, digital forensics, cloud security, and full-stack development. Open to internships and graduate roles.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0d1117;
+            --bg2: #161b22;
+            --bg3: #1c2333;
+            --border: #30363d;
+            --purple: #8b5cf6;
+            --purple-light: #a78bfa;
+            --cyan: #06b6d4;
+            --green: #10b981;
+            --text: #e6edf3;
+            --text-muted: #8b949e;
+            --text-dim: #6e7681;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--purple-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .nav-cta {
+            background: var(--purple);
+            color: #fff !important;
+            padding: 0.45rem 1.1rem;
+            border-radius: 6px;
+            font-size: 0.85rem !important;
+            transition: opacity 0.2s !important;
+        }
+
+        .nav-cta:hover {
+            opacity: 0.85;
+            color: #fff !important;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--green);
+            padding: 0.35rem 1rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-tag::before {
+            content: '●';
+            font-size: 0.6rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: 0.3
+            }
+        }
+
+        h1.hero-name {
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .hero-name span {
+            background: linear-gradient(135deg, var(--purple-light), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero-bio {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin-bottom: 2.5rem;
+            line-height: 1.75;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--purple);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: var(--purple-light);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--purple);
+            color: var(--purple-light);
+            transform: translateY(-1px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3.5rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--purple-light), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+        }
+
+        /* ── LAYOUT ── */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        section:nth-child(even) {
+            background: rgba(22, 27, 34, 0.5);
+        }
+
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--purple-light);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 600px;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        /* ── EXPERIENCE ── */
+        .exp-timeline {
+            position: relative;
+        }
+
+        .exp-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--purple), var(--cyan));
+            opacity: 0.3;
+            border-radius: 2px;
+        }
+
+        .exp-item {
+            padding-left: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .exp-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--purple);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+        }
+
+        .exp-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .exp-period {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--text-dim);
+            background: var(--bg3);
+            padding: 0.2rem 0.7rem;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+        }
+
+        .exp-badge {
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.2rem 0.65rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-current {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--green);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .badge-intern {
+            background: rgba(6, 182, 212, 0.12);
+            color: var(--cyan);
+            border: 1px solid rgba(6, 182, 212, 0.25);
+        }
+
+        .exp-role {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.2rem;
+        }
+
+        .exp-company {
+            font-size: 0.95rem;
+            color: var(--purple-light);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .exp-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.75;
+        }
+
+        .exp-desc li {
+            margin-bottom: 0.4rem;
+            padding-left: 1.2rem;
+            position: relative;
+            list-style: none;
+        }
+
+        .exp-desc li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--purple-light);
+        }
+
+        /* ── PROJECTS ── */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem;
+            transition: all 0.25s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-icon {
+            font-size: 1.5rem;
+            width: 44px;
+            height: 44px;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-year {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        .project-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-org {
+            font-size: 0.82rem;
+            color: var(--purple-light);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            flex: 1;
+            margin-bottom: 1.25rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--purple-light);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .project-link {
+            font-size: 0.85rem;
+            color: var(--cyan);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: gap 0.2s;
+        }
+
+        .project-link:hover {
+            gap: 0.6rem;
+        }
+
+        /* ── SKILLS ── */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .skill-group {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .skill-group-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--purple-light);
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-pill {
+            font-size: 0.82rem;
+            padding: 0.3rem 0.75rem;
+            border-radius: 6px;
+            background: var(--bg3);
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+
+        .skill-pill:hover {
+            color: var(--text);
+            border-color: var(--purple);
+            background: rgba(139, 92, 246, 0.08);
+        }
+
+        /* ── EDUCATION ── */
+        .edu-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .edu-card {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .edu-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--purple), var(--cyan));
+        }
+
+        .edu-school {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.3rem;
+        }
+
+        .edu-degree {
+            font-size: 0.9rem;
+            color: var(--purple-light);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .edu-note {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        /* ── CERTIFICATIONS ── */
+        .cert-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .cert-item {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            transition: border-color 0.2s;
+        }
+
+        .cert-item:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+        }
+
+        .cert-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .cert-icon.aws {
+            background: rgba(255, 153, 0, 0.12);
+        }
+
+        .cert-icon.google {
+            background: rgba(66, 133, 244, 0.12);
+        }
+
+        .cert-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.15rem;
+        }
+
+        .cert-issuer {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .cert-year {
+            margin-left: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--text-dim);
+            background: var(--bg3);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        /* ── CONTACT ── */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-text h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .contact-text p {
+            color: var(--text-muted);
+            line-height: 1.75;
+            margin-bottom: 2rem;
+        }
+
+        .contact-links-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .contact-link-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            padding: 0.85rem 1.1rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--bg2);
+            transition: all 0.2s;
+        }
+
+        .contact-link-item:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+            color: var(--text);
+            transform: translateX(4px);
+        }
+
+        .contact-link-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: rgba(139, 92, 246, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-link-label {
+            font-weight: 600;
+            color: var(--text);
+            font-size: 0.82rem;
+        }
+
+        .contact-link-value {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        footer span {
+            color: var(--purple-light);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 5rem 1.5rem 3rem;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .container {
+                padding: 0 1.25rem;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid,
+            .skills-grid,
+            .edu-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ── ANIMATIONS ── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-logo">neha.rs ~$</div>
+        <ul class="nav-links">
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-inner">
+            <div class="hero-tag">Open to Opportunities</div>
+            <h1 class="hero-name">Neha <span>RS</span></h1>
+            <p class="hero-bio">
+                Security-focused software engineer with experience in application security, cloud security, and automation.
+                Currently exploring AI/LLM security solutions and pursuing a B.Sc. Computer Science (Cybersecurity).
+                Proven ability to design secure architectures, automate threat detection, and build resilient cloud-native systems.
+            </p>
+            <div class="hero-actions">
+                <a href="mailto:nehars.rs@gmail.com" class="btn btn-primary">✉ Get in Touch</a>
+                <a href="https://github.com/nehars17" target="_blank" class="btn btn-outline">⬡ GitHub</a>
+                <a href="http://linkedin.com/in/neha-d-o-ram-singasan-7644ab203" target="_blank" class="btn btn-outline">in LinkedIn</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-num">3+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">8+</div>
+                    <div class="stat-label">Projects Shipped</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">5</div>
+                    <div class="stat-label">Certifications</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">🏅 Distinction</div>
+                    <div class="stat-label">DSTA Internship Project</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+        <div class="container">
+            <p class="section-label fade-up">// work_experience.log</p>
+            <h2 class="section-title fade-up">Professional Experience</h2>
+            <p class="section-desc fade-up">Internships and research roles across cybersecurity, cloud, and software development.</p>
+
+            <div class="exp-timeline">
+                <div class="exp-item fade-up">
+                    <div class="exp-meta">
+                        <span class="exp-period">Sept 2025 – Dec 2025</span>
+                        <span class="exp-badge badge-intern">Internship</span>
+                    </div>
+                    <div class="exp-role">Software Engineer Intern</div>
+                    <div class="exp-company">University of Victoria — INSPIRE Program</div>
+                    <ul class="exp-desc">
+                        <li>Developed a secure, gamified educational web platform using React and Node.js for an Indigenous language revitalisation initiative (BridgingRoots).</li>
+                        <li>Designed RESTful APIs with secure authentication, role-based access control (RBAC), and data protection best practices.</li>
+                        <li>Integrated school district identity management systems for compliant and auditable access control.</li>
+                    </ul>
+                </div>
+
+                <div class="exp-item fade-up">
+                    <div class="exp-meta">
+                        <span class="exp-period">May 2025 – Aug 2025</span>
+                        <span class="exp-badge badge-intern">Internship</span>
+                    </div>
+                    <div class="exp-role">Application Developer Intern</div>
+                    <div class="exp-company">Accenture (Client: IRAS)</div>
+                    <ul class="exp-desc">
+                        <li>Supported the cloud migration of Singapore's national tax system for the Inland Revenue Authority of Singapore (IRAS).</li>
+                        <li>Ensured data consistency and integrity across 1,500+ database tables during migration.</li>
+                        <li>Participated in secure SDLC practices, code reviews, and CI/CD pipeline improvements within Agile delivery teams.</li>
+                    </ul>
+                </div>
+
+
+                <div class="exp-item fade-up">
+                    <div class="exp-meta">
+                        <span class="exp-period">Sept 2022 – Feb 2023</span>
+                        <span class="exp-badge badge-intern">Internship</span>
+                    </div>
+                    <div class="exp-role">Cybersecurity Engineer</div>
+                    <div class="exp-company">DSTA (Defence Science &amp; Technology Agency)</div>
+                    <ul class="exp-desc">
+                        <li>Developed an automated red-team attack simulation framework using Terraform, mapped to the MITRE ATT&amp;CK framework.</li>
+                        <li>Built a prototype tool that analyses Terraform IaC scripts and generates automated attack plans for AWS cloud environments.</li>
+                        <li>Awarded <strong style="color:var(--green)">Distinction</strong> for internship project performance.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" style="background: rgba(22,27,34,0.6);">
+        <div class="container">
+            <p class="section-label fade-up">// ls projects/</p>
+            <h2 class="section-title fade-up">Projects &amp; Work</h2>
+            <p class="section-desc fade-up">A selection of real-world projects spanning enterprise software, security tooling, and cloud infrastructure.</p>
+
+            <div class="projects-grid">
+
+                <div class="project-card fade-up">
+                    <div class="project-top">
+                        <div class="project-icon">🔍</div>
+                        <span class="project-year" style="color:var(--green); font-weight:600;">Side Project</span>
+                    </div>
+                    <div class="project-name">VulnScan — LLM-Powered Code Auditor</div>
+                    <div class="project-org">Personal Project · In Development</div>
+                    <p class="project-desc">Modern, web-based security tool that leverages Large Language Models (LLMs) to perform deep semantic analysis of source code. Detects potential vulnerabilities including all OWASP Top 10 issues and provides actionable, context-aware fix suggestions.</p>
+                    <div class="tech-tags">
+                        <span class="tag">LLM / AI</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">SAST</span>
+                        <span class="tag">OWASP Top 10</span>
+                        <span class="tag">React</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-up">
+                    <div class="project-top">
+                        <div class="project-icon">📡</div>
+                        <span class="project-year" style="color:var(--green); font-weight:600;">Side Project</span>
+                    </div>
+                    <div class="project-name">NetSight — Network Packet Analyser</div>
+                    <div class="project-org">Personal Project · In Development</div>
+                    <p class="project-desc">Network security packet analyser built for quick, actionable analysis insights. Captures and parses live traffic, surfaces anomalies, suspicious patterns, and protocol breakdowns in a clean dashboard.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Scapy</span>
+                        <span class="tag">Wireshark</span>
+                        <span class="tag">Network Security</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-up">
+                    <div class="project-top">
+                        <div class="project-icon">🛡️</div>
+                        <span class="project-year">2022–2023</span>
+                    </div>
+                    <div class="project-name">Automated Red Team Ops Framework</div>
+                    <div class="project-org">DSTA (Defence Science &amp; Technology Agency)</div>
+                    <p class="project-desc">Automated red-team attack simulation framework using Terraform IaC, mapped to MITRE ATT&amp;CK. Built a prototype that analyses cloud infrastructure scripts and generates attack plans for AWS</p>
+                    <div class="tech-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Terraform</span>
+                        <span class="tag">AWS</span>
+                        <span class="tag">MITRE ATT&amp;CK</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-up">
+                    <div class="project-top">
+                        <div class="project-icon">🌿</div>
+                        <span class="project-year">2025</span>
+                    </div>
+                    <div class="project-name">BridgingRoots — Secure Edu Platform</div>
+                    <div class="project-org">UVic INSPIRE · Software Engineer Intern</div>
+                    <p class="project-desc">Secure, gamified educational web platform for Indigenous SENĆOŦEN language revitalisation. Designed RESTful APIs with RBAC, secure authentication, and school district identity management integration.</p>
+                    <div class="tech-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">RBAC</span>
+                    </div>
+                    <a href="https://inspireuvic.org/project/bridging-roots-bayside/" target="_blank" class="project-link">View Project →</a>
+                </div>
+
+                <div class="project-card fade-up">
+                    <div class="project-top">
+                        <div class="project-icon">☁️</div>
+                        <span class="project-year">2025</span>
+                    </div>
+                    <div class="project-name">Cloud CRM — Banking Solution Architecture</div>
+                    <div class="project-org">Academic · AWS</div>
+                    <p class="project-desc">Cloud-hosted banking CRM with AWS Cognito OAuth2 authentication and automated CI/CD. Designed the solution architecture including API Gateway, Lambda, and Flask backend with full security controls.</p>
+                    <div class="tech-tags">
+                        <span class="tag">AWS</span>
+                        <span class="tag">React</span>
+                        <span class="tag">Flask</span>
+                        <span class="tag">OAuth2</span>
+                        <span class="tag">CI/CD</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-up">
+                    <div class="project-top">
+                        <div class="project-icon">🔐</div>
+                        <span class="project-year">2021</span>
+                    </div>
+                    <div class="project-name">AppSec &amp; Secure Password Manager</div>
+                    <div class="project-org">Academic · NYP</div>
+                    <p class="project-desc">Developed secure web applications with systematic defences against all OWASP Top 10 vulnerabilities. Included a password manager with speech-to-text CAPTCHA, encrypted storage, and brute-force protection.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Flask</span>
+                        <span class="tag">OWASP Top 10</span>
+                        <span class="tag">Web Security</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-up">
+                    <div class="project-top">
+                        <div class="project-icon">⚡</div>
+                        <span class="project-year">2022</span>
+                    </div>
+                    <div class="project-name">CVE-2022-21999 Incident Response</div>
+                    <div class="project-org">Academic · NYP</div>
+                    <p class="project-desc">Investigated CVE-2022-21999 (Windows Print Spooler privilege escalation) and developed Splunk SOAR playbooks for automated detection and incident response — reducing mean time to respond.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Splunk SOAR</span>
+                        <span class="tag">CVE Research</span>
+                        <span class="tag">SIEM</span>
+                        <span class="tag">Incident Response</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-up">
+                    <div class="project-top">
+                        <div class="project-icon">🎱</div>
+                        <span class="project-year">2024</span>
+                    </div>
+                    <div class="project-name">9-Ball Pool Tournament Platform</div>
+                    <div class="project-org">Academic · SMU</div>
+                    <p class="project-desc">Full-stack tournament management platform with Spring Boot backend and React frontend. Implemented OAuth2 SSO, TOTP-based 2FA, and CAPTCHA for secure user authentication and access control.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Spring Boot</span>
+                        <span class="tag">React</span>
+                        <span class="tag">OAuth2</span>
+                        <span class="tag">2FA / TOTP</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-up">
+                    <div class="project-top">
+                        <div class="project-icon">🔴</div>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <div class="project-name">Red Team Attack Lab</div>
+                    <div class="project-org">Academic · SMU</div>
+                    <p class="project-desc">Built an adversary simulation environment replicating enterprise infrastructure. Conducted full-spectrum red team operations from initial access to domain dominance with comprehensive TTPs documentation.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Red Teaming</span>
+                        <span class="tag">Active Directory</span>
+                        <span class="tag">Lateral Movement</span>
+                        <span class="tag">Kali Linux</span>
+                    </div>
+                    <ul class="project-desc" style="margin-top:0.75rem; padding-left:0;">
+                        <li style="padding-left:1.2rem; position:relative; list-style:none; color:var(--text-muted); font-size:0.88rem; margin-bottom:0.35rem;"><span style="position:absolute;left:0;color:var(--purple-light);">▹</span>Simulated APT attack chains with multi-stage payloads</li>
+                        <li style="padding-left:1.2rem; position:relative; list-style:none; color:var(--text-muted); font-size:0.88rem; margin-bottom:0.35rem;"><span style="position:absolute;left:0;color:var(--purple-light);">▹</span>Privilege escalation and lateral movement techniques</li>
+                        <li style="padding-left:1.2rem; position:relative; list-style:none; color:var(--text-muted); font-size:0.88rem;"><span style="position:absolute;left:0;color:var(--purple-light);">▹</span>Evasion tactics against EDR/AV solutions</li>
+                    </ul>
+                </div>
+
+                <div class="project-card fade-up">
+                    <div class="project-top">
+                        <div class="project-icon">🕵️</div>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <div class="project-name">Cyber Threat Intelligence</div>
+                    <div class="project-org">Academic · SMU</div>
+                    <p class="project-desc">Deep-dive analysis of state-sponsored APT groups and their offensive techniques. Documented TTPs for red team emulation exercises based on real-world nation-state campaigns using the Diamond Model.</p>
+                    <div class="tech-tags">
+                        <span class="tag">MITRE ATT&amp;CK</span>
+                        <span class="tag">APT TTPs</span>
+                        <span class="tag">Threat Intel</span>
+                        <span class="tag">Diamond Model</span>
+                    </div>
+                    <ul class="project-desc" style="margin-top:0.75rem; padding-left:0;">
+                        <li style="padding-left:1.2rem; position:relative; list-style:none; color:var(--text-muted); font-size:0.88rem; margin-bottom:0.35rem;"><span style="position:absolute;left:0;color:var(--purple-light);">▹</span>Mapped APT28 and APT29 TTPs to the ATT&amp;CK framework</li>
+                        <li style="padding-left:1.2rem; position:relative; list-style:none; color:var(--text-muted); font-size:0.88rem;"><span style="position:absolute;left:0;color:var(--purple-light);">▹</span>Analysis of supply chain attacks and zero-day exploitation chains</li>
+                    </ul>
+                </div>
+
+                <div class="project-card fade-up">
+                    <div class="project-top">
+                        <div class="project-icon">🚗</div>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <div class="project-name">EV Parking Mobile App</div>
+                    <div class="project-org">Academic · SMU-X Industry Project</div>
+                    <p class="project-desc">Application lead on a full-stack mobile application for EV vehicle parking management. Built real-time IoT integration with MQTT server, live monitoring dashboards in Grafana, Docker-based database deployment, and a Telegram notification bot for parking alerts.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Mobile Dev</span>
+                        <span class="tag">MQTT</span>
+                        <span class="tag">Grafana</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Telegram Bot</span>
+                        <span class="tag">IoT</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <div class="container">
+            <p class="section-label fade-up">// cat skills.json</p>
+            <h2 class="section-title fade-up">Technical Skills</h2>
+            <p class="section-desc fade-up">A broad foundation across cybersecurity, cloud infrastructure, and full-stack development.</p>
+
+            <div class="skills-grid">
+                <div class="skill-group fade-up">
+                    <div class="skill-group-title">🔒 Cybersecurity</div>
+                    <div class="skill-items">
+                        <span class="skill-pill">Digital Forensics</span>
+                        <span class="skill-pill">Incident Response</span>
+                        <span class="skill-pill">Web App Security</span>
+                        <span class="skill-pill">OWASP Top 10</span>
+                        <span class="skill-pill">Blue Team / SOC</span>
+                        <span class="skill-pill">AI/LLM Security</span>
+                        <span class="skill-pill">Threat Hunting</span>
+                        <span class="skill-pill">Vulnerability Assessment</span>
+                        <span class="skill-pill">Red Team Automation</span>
+                        <span class="skill-pill">Secure SDLC</span>
+                        <span class="skill-pill">DevSecOps</span>
+                    </div>
+                </div>
+
+                <div class="skill-group fade-up">
+                    <div class="skill-group-title">☁️ Cloud &amp; DevOps</div>
+                    <div class="skill-items">
+                        <span class="skill-pill">AWS EC2 / S3 / IAM</span>
+                        <span class="skill-pill">AWS Cognito</span>
+                        <span class="skill-pill">API Gateway</span>
+                        <span class="skill-pill">Azure App Services</span>
+                        <span class="skill-pill">Azure AD</span>
+                        <span class="skill-pill">Docker</span>
+                        <span class="skill-pill">CI/CD Pipelines</span>
+                        <span class="skill-pill">Azure DevOps</span>
+                        <span class="skill-pill">Terraform</span>
+                    </div>
+                </div>
+
+                <div class="skill-group fade-up">
+                    <div class="skill-group-title">🖥️ Programming</div>
+                    <div class="skill-items">
+                        <span class="skill-pill">Python</span>
+                        <span class="skill-pill">Java</span>
+                        <span class="skill-pill">JavaScript</span>
+                        <span class="skill-pill">SQL</span>
+                        <span class="skill-pill">PHP</span>
+                        <span class="skill-pill">Bash</span>
+                    </div>
+                </div>
+
+                <div class="skill-group fade-up">
+                    <div class="skill-group-title">⚙️ Frameworks</div>
+                    <div class="skill-items">
+                        <span class="skill-pill">React.js</span>
+                        <span class="skill-pill">Node.js</span>
+                        <span class="skill-pill">Flask</span>
+                        <span class="skill-pill">Spring Boot</span>
+                        <span class="skill-pill">MySQL</span>
+                        <span class="skill-pill">Nginx</span>
+                        <span class="skill-pill">Git &amp; GitHub</span>
+                        <span class="skill-pill">Postman</span>
+                    </div>
+                </div>
+
+                <div class="skill-group fade-up">
+                    <div class="skill-group-title">🛠️ Security Tools</div>
+                    <div class="skill-items">
+                        <span class="skill-pill">Burp Suite</span>
+                        <span class="skill-pill">Wireshark</span>
+                        <span class="skill-pill">Metasploit</span>
+                        <span class="skill-pill">Splunk SOAR</span>
+                        <span class="skill-pill">SIEM (Splunk)</span>
+                        <span class="skill-pill">Nmap</span>
+                        <span class="skill-pill">Scapy</span>
+                        <span class="skill-pill">Grafana</span>
+                        <span class="skill-pill">MQTT</span>
+                    </div>
+                </div>
+
+                <div class="skill-group fade-up">
+                    <div class="skill-group-title">🔑 Auth &amp; Access</div>
+                    <div class="skill-items">
+                        <span class="skill-pill">OAuth2</span>
+                        <span class="skill-pill">TOTP / 2FA</span>
+                        <span class="skill-pill">RBAC</span>
+                        <span class="skill-pill">JWT</span>
+                        <span class="skill-pill">MITRE ATT&amp;CK</span>
+                        <span class="skill-pill">OSINT</span>
+                        <span class="skill-pill">Network Protocols</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" style="background: rgba(22,27,34,0.6);">
+        <div class="container">
+            <p class="section-label fade-up">// education.db</p>
+            <h2 class="section-title fade-up">Education</h2>
+            <p class="section-desc fade-up">Academic background combining computer science theory with applied cybersecurity practice.</p>
+
+            <div class="edu-cards">
+                <div class="edu-card fade-up">
+                    <div class="edu-school">Singapore Management University</div>
+                    <div class="edu-degree">B.Sc. Computer Science — Cybersecurity Major</div>
+                    <p class="edu-note">2023 – 2027 · Focus on secure, resilient software and AI/LLM adversarial security research.<br><br>
+                        🏅 <strong style="color:var(--purple-light);">Goh Foundation Endowed Scholar</strong><br>
+                        🏅 <strong style="color:var(--purple-light);">GIC Sparks &amp; Smile Awardee</strong>
+                    </p>
+                </div>
+                <div class="edu-card fade-up">
+                    <div class="edu-school">Nanyang Polytechnic</div>
+                    <div class="edu-degree">Diploma in Cybersecurity &amp; Digital Forensics</div>
+                    <p class="edu-note">2020 – 2023 · Forensic analysis, threat investigation, and security operations.<br><br>
+                        🏅 <strong style="color:var(--purple-light);">DSTA Digital Polytechnic Scholar</strong><br>
+                        🏅 <strong style="color:var(--purple-light);">NYP Scholar · Merit Award</strong>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div style="margin-top: 3rem;">
+                <p class="section-label fade-up" style="margin-bottom: 0.5rem;">// certifications</p>
+                <h3 class="fade-up" style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);">Certifications</h3>
+                <div class="cert-list">
+                    <div class="cert-item fade-up">
+                        <div class="cert-icon aws">☁️</div>
+                        <div>
+                            <div class="cert-name">AWS Certified Solutions Architect – Associate</div>
+                            <div class="cert-issuer">Amazon Web Services</div>
+                        </div>
+                        <div class="cert-year">2025</div>
+                    </div>
+                    <div class="cert-item fade-up">
+                        <div class="cert-icon" style="background:rgba(255,60,60,0.12);">🔓</div>
+                        <div>
+                            <div class="cert-name">Certified Ethical Hacker (CEH)</div>
+                            <div class="cert-issuer">EC-Council</div>
+                        </div>
+                        <div class="cert-year">2022</div>
+                    </div>
+                    <div class="cert-item fade-up">
+                        <div class="cert-icon" style="background:rgba(255,60,60,0.12);">🕵️</div>
+                        <div>
+                            <div class="cert-name">Computer Hacking Forensic Investigator (CHFI)</div>
+                            <div class="cert-issuer">EC-Council</div>
+                        </div>
+                        <div class="cert-year">2022</div>
+                    </div>
+                    <div class="cert-item fade-up">
+                        <div class="cert-icon google">🐍</div>
+                        <div>
+                            <div class="cert-name">Google IT Automation with Python Professional</div>
+                            <div class="cert-issuer">Google / Coursera</div>
+                        </div>
+                        <div class="cert-year">2023</div>
+                    </div>
+                    <div class="cert-item fade-up">
+                        <div class="cert-icon aws">☁️</div>
+                        <div>
+                            <div class="cert-name">AWS Certified Cloud Practitioner</div>
+                            <div class="cert-issuer">Amazon Web Services</div>
+                        </div>
+                        <div class="cert-year">2021</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievements -->
+            <div style="margin-top: 3rem;">
+                <p class="section-label fade-up" style="margin-bottom: 0.5rem;">// achievements</p>
+                <h3 class="fade-up" style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);">Awards &amp; Achievements</h3>
+                <div class="cert-list">
+                    <div class="cert-item fade-up">
+                        <div class="cert-icon" style="background:rgba(255,200,0,0.12);">🏅</div>
+                        <div>
+                            <div class="cert-name">Distinction — DSTA Internship Project</div>
+                            <div class="cert-issuer">Defence Science &amp; Technology Agency</div>
+                        </div>
+                        <div class="cert-year">2023</div>
+                    </div>
+                    <div class="cert-item fade-up">
+                        <div class="cert-icon" style="background:rgba(192,192,192,0.12);">🥈</div>
+                        <div>
+                            <div class="cert-name">1st Runner Up — UVic INSPIRE Hackathon</div>
+                            <div class="cert-issuer">University of Victoria</div>
+                        </div>
+                        <div class="cert-year">2025</div>
+                    </div>
+                    <div class="cert-item fade-up">
+                        <div class="cert-icon" style="background:rgba(255,200,0,0.12);">🏆</div>
+                        <div>
+                            <div class="cert-name">Winning Team — Ensign InfoSecurity Hackathon</div>
+                            <div class="cert-issuer">Singapore Defence Tech Summit</div>
+                        </div>
+                        <div class="cert-year">2023</div>
+                    </div>
+                    <div class="cert-item fade-up">
+                        <div class="cert-icon" style="background:rgba(192,192,192,0.12);">🥈</div>
+                        <div>
+                            <div class="cert-name">1st Runner Up — GIT × PayPal CTF</div>
+                            <div class="cert-issuer">Girls in Tech × PayPal</div>
+                        </div>
+                        <div class="cert-year">2023</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="container">
+            <p class="section-label fade-up">// ./contact.sh</p>
+            <h2 class="section-title fade-up">Get In Touch</h2>
+            <div class="contact-wrapper">
+                <div class="contact-text fade-up">
+                    <h3>Let's work together 👋</h3>
+                    <p>I'm currently open to internship and graduate opportunities in cybersecurity, cloud security, and
+                        full-stack development. Whether it's a role, a research collaboration, or just a conversation —
+                        my inbox is open.</p>
+                    <p style="color: var(--text-dim); font-size: 0.85rem; font-family: 'JetBrains Mono', monospace;">
+                        "Securing the digital frontier, one packet at a time."
+                    </p>
+                </div>
+                <div class="contact-links-list fade-up">
+                    <a href="mailto:nehars.rs@gmail.com" class="contact-link-item">
+                        <div class="contact-link-icon">✉</div>
+                        <div>
+                            <div class="contact-link-label">Email</div>
+                            <div class="contact-link-value">nehars.rs@gmail.com</div>
+                        </div>
+                    </a>
+                    <a href="http://linkedin.com/in/neha-d-o-ram-singasan-7644ab203" target="_blank"
+                        class="contact-link-item">
+                        <div class="contact-link-icon">in</div>
+                        <div>
+                            <div class="contact-link-label">LinkedIn</div>
+                            <div class="contact-link-value">neha-d-o-ram-singasan</div>
+                        </div>
+                    </a>
+                    <a href="https://github.com/nehars17" target="_blank" class="contact-link-item">
+                        <div class="contact-link-icon">⬡</div>
+                        <div>
+                            <div class="contact-link-label">GitHub</div>
+                            <div class="contact-link-value">github.com/nehars17</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <span>neha.rs</span> ~$ echo "Built with ♥ and too much coffee" &nbsp;|&nbsp; © 2026 Neha RS
+    </footer>
+
+    <script>
+        // Intersection Observer for fade-up animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.fade-up').forEach((el, i) => {
+            el.style.transitionDelay = `${(i % 4) * 0.07}s`;
+            observer.observe(el);
+        });
+
+        // Active nav link highlight on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(s => {
+                if (window.scrollY >= s.offsetTop - 100) current = s.id;
+            });
+            navLinks.forEach(a => {
+                a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : '';
+            });
+        });
+    </script>
+</body>
+
+</html>
