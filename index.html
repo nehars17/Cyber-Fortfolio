@@ -1,651 +1,433 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Neha RS — Security Engineer</title>
-<meta name="description" content="Neha RS — Security Engineer. SMU CS student specialising in Cybersecurity. Building security tools, breaking systems.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#080c14;--bg2:#0d1422;--bg3:#111a2e;
-  --border:#1a2540;--border2:#243358;
-  --accent:#4d8ef0;--accent2:#7eb8f7;--accent3:#a8d4ff;--purple:#94b8f5;
-  --text:#e8eef8;--text2:#7a93b8;--text3:#3a506e;
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;cursor:none;}
-#cur{width:6px;height:6px;background:var(--accent);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;mix-blend-mode:screen;transition:transform .15s;}
-#cur-ring{width:28px;height:28px;border:1px solid rgba(77,142,240,.35);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;}
-body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.025) 3px,rgba(0,0,0,.025) 4px);pointer-events:none;z-index:1;}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 3rem;background:rgba(7,9,13,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
-.nav-logo{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--accent);letter-spacing:.04em;}
-.nav-links{display:flex;gap:2.5rem;list-style:none;}
-.nav-links a{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--text3);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s;}
-.nav-links a:hover{color:var(--accent);}
-.nav-pill{display:flex;align-items:center;gap:.5rem;font-family:'Space Mono',monospace;font-size:.68rem;color:var(--accent3);background:rgba(168,212,255,.06);border:1px solid rgba(168,212,255,.18);padding:.35rem .9rem;border-radius:100px;}
-.pulse{width:6px;height:6px;background:var(--accent3);border-radius:50%;animation:blink 2s infinite;}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden;}
-.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(77,142,240,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(77,142,240,.018) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 70% 80% at 60% 40%,black,transparent);}
-.glow1{position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(77,142,240,.07) 0%,transparent 65%);top:-200px;right:-150px;pointer-events:none;}
-.glow2{position:absolute;width:450px;height:450px;background:radial-gradient(circle,rgba(126,184,247,.04) 0%,transparent 65%);bottom:-100px;left:-100px;pointer-events:none;}
-.hero-inner{max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:3;display:grid;grid-template-columns:1.1fr .9fr;gap:5rem;align-items:center;}
-.eyebrow{display:flex;align-items:center;gap:.75rem;margin-bottom:2rem;}
-.eyebrow-line{width:36px;height:1px;background:var(--accent);}
-.eyebrow-text{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;}
-h1{font-family:'Syne',sans-serif;font-size:clamp(3rem,6.5vw,5.2rem);font-weight:800;line-height:1;letter-spacing:-.03em;margin-bottom:1.25rem;}
-.l1{display:block;color:var(--text);}
-.l2{display:block;color:transparent;-webkit-text-stroke:1.5px var(--accent);font-style:italic;}
-.hero-sub{font-family:'Space Mono',monospace;font-size:.72rem;color:var(--text3);letter-spacing:.09em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;}
-.hero-sub::after{content:'';flex:1;height:1px;background:var(--border2);max-width:80px;}
-.hero-bio{font-size:1rem;color:#9cb4d0;line-height:2;margin-bottom:2.5rem;font-weight:300;max-width:520px;}
-.hero-bio strong{color:#c8ddf2;font-weight:500;}
-.hero-bio .kw{color:var(--accent);font-weight:500;border-bottom:1px solid rgba(77,142,240,.3);}
-.cta-row{display:flex;gap:.75rem;flex-wrap:wrap;}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.6rem;border-radius:3px;text-decoration:none;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;transition:all .2s;cursor:none;}
-.btn-solid{background:var(--accent);color:var(--bg);font-weight:700;}
-.btn-solid:hover{background:#fff;transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--accent);}
-.btn-line{background:transparent;color:var(--text2);border:1px solid var(--border2);}
-.btn-line:hover{border-color:var(--accent);color:var(--accent);transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--border);}
-
-/* HERO CARDS */
-.hero-cards{display:flex;flex-direction:column;gap:.75rem;}
-.hcard{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1.25rem;position:relative;overflow:hidden;transition:transform .2s,border-color .2s;}
-.hcard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;}
-.hcard.c1::before{background:var(--accent);}
-.hcard.c2::before{background:var(--accent2);}
-.hcard.c3::before{background:var(--accent3);}
-.hcard.c4::before{background:var(--purple);}
-.hcard:hover{transform:translateX(5px);border-color:var(--border2);box-shadow:0 4px 24px rgba(77,142,240,.08);}
-.hcard.c1:hover{box-shadow:0 4px 20px rgba(77,142,240,.1),inset 0 0 0 1px rgba(77,142,240,.15);}
-.hcard.c2:hover{box-shadow:0 4px 20px rgba(126,184,247,.1),inset 0 0 0 1px rgba(126,184,247,.15);}
-.hcard.c3:hover{box-shadow:0 4px 20px rgba(168,212,255,.1),inset 0 0 0 1px rgba(168,212,255,.15);}
-.hcard.c4:hover{box-shadow:0 4px 20px rgba(148,184,245,.12),inset 0 0 0 1px rgba(148,184,245,.2);}
-.hcard-ico{width:40px;height:40px;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
-.hcard.c1 .hcard-ico{background:rgba(77,142,240,.14);border:1px solid rgba(77,142,240,.22);}
-.hcard.c2 .hcard-ico{background:rgba(126,184,247,.14);border:1px solid rgba(126,184,247,.22);}
-.hcard.c3 .hcard-ico{background:rgba(168,212,255,.14);border:1px solid rgba(168,212,255,.22);}
-.hcard.c4 .hcard-ico{background:rgba(148,184,245,.14);border:1px solid rgba(148,184,245,.22);}
-.hcard-ico svg{width:20px;height:20px;stroke-width:1.8;opacity:.9;}
-.hcard.c1 .hcard-ico svg{stroke:var(--accent);}
-.hcard.c2 .hcard-ico svg{stroke:var(--accent2);}
-.hcard.c3 .hcard-ico svg{stroke:var(--accent3);}
-.hcard.c4 .hcard-ico svg{stroke:var(--purple);}
-.hcard-num{font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:800;line-height:1;min-width:56px;}
-.hcard.c1 .hcard-num{color:var(--accent);}
-.hcard.c2 .hcard-num{color:var(--accent2);}
-.hcard.c3 .hcard-num{color:var(--accent3);}
-.hcard.c4 .hcard-num{color:var(--purple);}
-.hcard-label{font-size:.88rem;font-weight:500;color:var(--text);margin-bottom:.15rem;}
-.hcard-sub{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--text3);line-height:1.5;}
-
-/* SECTIONS */
-.sec{padding:5.5rem 3rem;position:relative;z-index:3;}
-.sec-alt{background:var(--bg2);}
-.wrap{max-width:1100px;margin:0 auto;}
-.sec-hd{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border);}
-.sec-tag{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.4rem;}
-h2{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;letter-spacing:-.02em;}
-.sec-n{font-family:'Syne',sans-serif;font-size:3.5rem;font-weight:800;color:var(--border2);line-height:1;letter-spacing:-.05em;user-select:none;}
-
-/* EXPERIENCE */
-.exp-list{display:flex;flex-direction:column;}
-.exp-row{display:grid;grid-template-columns:160px 1fr;gap:3rem;padding:2.25rem 0;border-bottom:1px solid var(--border);transition:background .2s;}
-.exp-row:last-child{border-bottom:none;}
-.exp-row:hover{background:rgba(77,142,240,.018);}
-.exp-period{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--text3);line-height:1.7;margin-bottom:.5rem;}
-.badge{display:inline-block;font-family:'Space Mono',monospace;font-size:.58rem;padding:.18rem .5rem;border-radius:2px;text-transform:uppercase;letter-spacing:.07em;}
-.b-now{background:rgba(168,212,255,.08);color:var(--accent3);border:1px solid rgba(168,212,255,.2);}
-.b-up{background:rgba(126,184,247,.08);color:var(--accent2);border:1px solid rgba(126,184,247,.2);}
-.b-past{background:rgba(77,142,240,.06);color:var(--accent);border:1px solid rgba(77,142,240,.16);}
-.exp-role{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:.2rem;}
-.exp-co{font-size:.85rem;color:var(--accent);font-weight:500;margin-bottom:.9rem;}
-.exp-pts{list-style:none;display:flex;flex-direction:column;gap:.45rem;}
-.exp-pts li{font-size:.875rem;color:var(--text2);line-height:1.7;padding-left:1.2rem;position:relative;font-weight:300;}
-.exp-pts li::before{content:'→';position:absolute;left:0;color:var(--accent);font-size:.75rem;top:.05rem;opacity:.8;}
-.exp-ts{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.85rem;}
-.etag{font-family:'Space Mono',monospace;font-size:.6rem;padding:.18rem .55rem;border-radius:2px;background:var(--bg3);color:var(--text3);border:1px solid var(--border);}
-
-/* PROJECTS */
-.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden;}
-.pcard{background:var(--bg);padding:1.85rem;display:flex;flex-direction:column;transition:background .2s;position:relative;}
-.pcard::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:transparent;transition:background .2s;}
-.pcard:hover{background:var(--bg2);}
-.pcard:hover::after{background:var(--accent);}
-.pcard.feat{grid-column:span 2;background:var(--bg2);}
-.pcard.feat::after{background:var(--accent2);}
-.pcard.feat:hover{background:var(--bg3);}
-.pcard-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.1rem;}
-.pico{width:40px;height:40px;border-radius:6px;display:flex;align-items:center;justify-content:center;background:rgba(77,142,240,.07);border:1px solid rgba(77,142,240,.14);}
-.pico svg{width:18px;height:18px;stroke:var(--accent);}
-.pcard.feat .pico{background:rgba(126,184,247,.07);border-color:rgba(126,184,247,.14);}
-.pcard.feat .pico svg{stroke:var(--accent2);}
-.psec .pico{background:rgba(148,184,245,.07);border-color:rgba(148,184,245,.14);}
-.psec .pico svg{stroke:var(--purple);}
-.pmeta{display:flex;flex-direction:column;align-items:flex-end;gap:.3rem;}
-.pyear{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--text3);}
-.ptyp{font-family:'Space Mono',monospace;font-size:.58rem;padding:.15rem .5rem;border-radius:2px;text-transform:uppercase;letter-spacing:.06em;}
-.t-feat{background:rgba(126,184,247,.08);color:var(--accent2);border:1px solid rgba(126,184,247,.2);}
-.t-sec{background:rgba(148,184,245,.08);color:var(--purple);border:1px solid rgba(148,184,245,.2);}
-.t-blue{background:rgba(77,142,240,.06);color:var(--accent);border:1px solid rgba(77,142,240,.16);}
-.t-dim{background:rgba(255,255,255,.04);color:var(--text3);border:1px solid var(--border);}
-.pname{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.25rem;line-height:1.3;}
-.pcard.feat .pname{font-size:1.2rem;}
-.porg{font-size:.75rem;color:var(--accent);font-weight:500;margin-bottom:.65rem;}
-.pcard.feat .porg{color:var(--accent2);}
-.pdesc{font-size:.845rem;color:var(--text2);line-height:1.72;flex:1;margin-bottom:1.1rem;font-weight:300;}
-.ptags{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.65rem;}
-.ptag{font-family:'Space Mono',monospace;font-size:.58rem;padding:.18rem .5rem;border-radius:2px;background:var(--bg3);color:var(--text3);border:1px solid var(--border);}
-.plink{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--accent);text-decoration:none;letter-spacing:.04em;display:inline-flex;align-items:center;gap:.4rem;transition:gap .2s;margin-top:auto;}
-.plink:hover{gap:.7rem;}
-.plink svg{width:12px;height:12px;stroke:var(--accent);}
-
-/* SKILLS */
-.sk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
-.sk-group{background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:1.4rem;}
-.sk-title{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.9rem;padding-bottom:.7rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.6rem;}
-.sk-title svg{width:13px;height:13px;stroke:var(--accent);flex-shrink:0;}
-.sk-pills{display:flex;flex-wrap:wrap;gap:.35rem;}
-.sk-pill{font-size:.78rem;padding:.28rem .65rem;border-radius:3px;background:var(--bg2);color:var(--text2);border:1px solid var(--border);transition:all .15s;}
-.sk-pill:hover{color:var(--text);border-color:var(--accent);background:rgba(0,200,240,.04);}
-
-/* EDUCATION */
-.edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:3rem;}
-.edu-card{background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:1.6rem;position:relative;overflow:hidden;}
-.edu-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
-.edu-school{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:.25rem;}
-.edu-deg{font-size:.8rem;color:var(--accent);font-weight:500;margin-bottom:.3rem;}
-.edu-yr{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--text3);margin-bottom:.9rem;}
-.edu-pts{display:flex;flex-direction:column;gap:.3rem;}
-.edu-pt{font-size:.8rem;color:var(--text2);display:flex;align-items:flex-start;gap:.5rem;line-height:1.5;}
-.edu-pt::before{content:'▸';color:var(--accent);font-size:.7rem;flex-shrink:0;margin-top:.1rem;}
-
-/* CERTS */
-.ca-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
-.ca-title{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.1rem;display:flex;align-items:center;gap:.6rem;}
-.ca-title svg{width:13px;height:13px;stroke:var(--accent);}
-.ci-list{display:flex;flex-direction:column;gap:.6rem;}
-.ci{display:flex;align-items:center;gap:.9rem;padding:.9rem 1.1rem;background:var(--bg3);border:1px solid var(--border);border-radius:4px;transition:border-color .2s;}
-.ci:hover{border-color:var(--border2);}
-.ci-ico{width:34px;height:34px;border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
-.ci-ico svg{width:15px;height:15px;}
-.ci-ico.aws{background:rgba(126,184,247,.12);}
-.ci-ico.aws svg{stroke:var(--accent2);}
-.ci-ico.ec{background:rgba(77,142,240,.1);}
-.ci-ico.ec svg{stroke:var(--accent);}
-.ci-ico.gl{background:rgba(168,212,255,.1);}
-.ci-ico.gl svg{stroke:var(--accent3);}
-.ci-ico.aw{background:rgba(148,184,245,.1);}
-.ci-ico.aw svg{stroke:var(--purple);}
-.ci-ico.sp{background:rgba(77,142,240,.1);}
-.ci-ico.sp svg{stroke:var(--accent);}
-.ci-ico.sl{background:rgba(168,212,255,.08);}
-.ci-ico.sl svg{stroke:var(--accent3);}
-.ci-info{flex:1;}
-.ci-name{font-size:.845rem;font-weight:500;color:var(--text);margin-bottom:.1rem;}
-.ci-iss{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--text3);}
-.ci-yr{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--text3);background:var(--bg2);padding:.18rem .5rem;border-radius:2px;flex-shrink:0;}
-
-/* CONTACT */
-.ct-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
-.ct-left h3{font-family:'Syne',sans-serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-bottom:1rem;}
-.ct-left h3 span{color:transparent;-webkit-text-stroke:1.5px var(--accent);}
-.ct-left p{font-size:.9rem;color:var(--text2);line-height:1.85;margin-bottom:1.75rem;font-weight:300;}
-.ct-quote{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--text3);padding-left:1rem;border-left:2px solid var(--border2);line-height:1.7;}
-.ct-links{display:flex;flex-direction:column;gap:.6rem;}
-.ct-link{display:flex;align-items:center;gap:.9rem;padding:1rem 1.2rem;background:var(--bg2);border:1px solid var(--border);border-radius:4px;text-decoration:none;color:var(--text2);transition:all .2s;}
-.ct-link:hover{border-color:var(--accent);color:var(--text);transform:translateX(5px);}
-.ct-link-ico{width:36px;height:36px;border-radius:4px;background:var(--bg3);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.ct-link-ico svg{width:15px;height:15px;stroke:var(--accent);}
-.ct-link-lbl{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--text3);letter-spacing:.07em;text-transform:uppercase;margin-bottom:.12rem;}
-.ct-link-val{font-size:.82rem;color:var(--text);}
-
-footer{border-top:1px solid var(--border);padding:1.4rem 3rem;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:3;}
-.fl{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--text3);}
-.fl span{color:var(--accent);}
-.fr{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--text3);}
-
-.hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:.4rem;background:none;border:none;}
-.hamburger span{width:20px;height:1.5px;background:var(--text2);display:block;transition:all .25s;}
-.hamburger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg);}
-.hamburger.open span:nth-child(2){opacity:0;}
-.hamburger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg);}
-.mobile-menu{display:none;position:fixed;inset:0;top:56px;background:rgba(8,12,20,.97);backdrop-filter:blur(20px);z-index:190;flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
-.mobile-menu.open{display:flex;}
-.mobile-menu a{font-family:'Space Mono',monospace;font-size:1rem;color:var(--text2);text-decoration:none;letter-spacing:.12em;text-transform:uppercase;transition:color .2s;}
-.mobile-menu a:hover{color:var(--accent);}
-
-@media(max-width:900px){.hamburger{display:flex;}}
-
-.rv{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease;}
-.rv.in{opacity:1;transform:translateY(0);}
-
-@media(max-width:900px){
-  nav{padding:1rem 1.5rem;}
-  .nav-links{display:none;}
-  .hero{padding:6rem 1.5rem 3rem;}
-  .hero-inner{grid-template-columns:1fr;gap:2.5rem;}
-  .hero-cards{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;}
-  .sec{padding:4rem 1.5rem;}
-  .exp-row{grid-template-columns:1fr;gap:.75rem;}
-  .proj-grid{grid-template-columns:1fr 1fr;}
-  .pcard.feat{grid-column:span 2;}
-  .sk-grid{grid-template-columns:1fr 1fr;}
-  .edu-grid{grid-template-columns:1fr 1fr;}
-  .ca-grid{grid-template-columns:1fr;gap:2rem;}
-  .ct-wrap{grid-template-columns:1fr;gap:2.5rem;}
-  footer{flex-direction:column;gap:.5rem;text-align:center;}
-}
-@media(max-width:600px){
-  nav{padding:.9rem 1.25rem;}
-  .hero{padding:5rem 1.25rem 2.5rem;}
-  h1{font-size:clamp(2.4rem,11vw,3.5rem);}
-  .hero-cards{grid-template-columns:1fr;}
-  .hcard-num{font-size:1.5rem;}
-  .sec{padding:3rem 1.25rem;}
-  .sec-hd{flex-direction:column;align-items:flex-start;gap:.5rem;}
-  .sec-n{display:none;}
-  .proj-grid{grid-template-columns:1fr;}
-  .pcard.feat{grid-column:span 1;}
-  .sk-grid{grid-template-columns:1fr;}
-  .edu-grid{grid-template-columns:1fr;}
-  .exp-row{padding:1.5rem 0;}
-  .ct-wrap{gap:2rem;}
-  .ct-left h3{font-size:1.4rem;}
-  footer{padding:1.2rem 1.25rem;}
-  .cta-row{flex-direction:column;align-items:flex-start;}
-  .btn{width:100%;justify-content:center;}
-}
-/* TYPING CURSOR */
-.typing-cursor{color:var(--accent);animation:blink-cur .75s step-end infinite;font-size:.8rem;margin-left:1px;}
-@keyframes blink-cur{0%,100%{opacity:1;}50%{opacity:0;}}
-
-/* SCAN LINE */
-.scanline{position:fixed;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(77,142,240,.1),rgba(77,142,240,.2),rgba(77,142,240,.1),transparent);pointer-events:none;z-index:2;animation:scan 9s linear infinite;opacity:0;}
-@keyframes scan{0%{top:-2px;opacity:0;}3%{opacity:1;}97%{opacity:.5;}100%{top:100vh;opacity:0;}}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Neha RS — Security Engineer. SMU CS Cybersecurity. Cloud security, red team automation, AI/LLM security.">
+  <title>Neha RS — Security Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Space+Mono:wght@400;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<div id="cur"></div>
-<div id="cur-ring"></div>
-<div class="scanline"></div>
+<div class="page">
 
-<nav>
-  <div class="nav-logo">NRS://</div>
-  <ul class="nav-links">
-    <li><a href="#exp">Experience</a></li>
-    <li><a href="#proj">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#edu">Education</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <div class="nav-pill"><div class="pulse"></div>Open to Opportunities</div>
-  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-</nav>
-<div class="mobile-menu" id="mobile-menu">
-  <a href="#exp" onclick="closeMobile()">Experience</a>
-  <a href="#proj" onclick="closeMobile()">Projects</a>
-  <a href="#skills" onclick="closeMobile()">Skills</a>
-  <a href="#edu" onclick="closeMobile()">Education</a>
-  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <!-- ── Nav ─────────────────────────────── -->
+  <nav class="site-nav">
+    <div>
+      <div class="nav-name">Neha RS</div>
+      <div class="nav-tag">Security Engineer · Singapore</div>
+    </div>
+    <div class="nav-links">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <div class="nav-dot">
+        <span class="dot"></span>
+        Open to roles
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Hero ─────────────────────────────── -->
+  <div class="hero">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="hero-label">Security Engineer · Singapore</div>
+        <h1>Neha<br><span class="fade">RS.</span></h1>
+        <div class="hero-bio">
+          Cloud security. Red team automation. <b>AI/LLM security.</b><br>
+          DSTA Scholar. ESET Winner. SMU CS.
+        </div>
+        <div class="hero-actions">
+          <a href="mailto:nehars.rs@gmail.com" class="cta">Get in touch</a>
+          <a href="https://github.com/nehars17" class="ghost" target="_blank">GitHub ↗</a>
+          <a href="https://linkedin.com/in/neha-d-o-ram-singasan" class="ghost" target="_blank">LinkedIn ↗</a>
+        </div>
+        <div class="stats">
+          <div><div class="s-n">5</div><div class="s-l">Internships</div></div>
+          <div><div class="s-n">10+</div><div class="s-l">Projects</div></div>
+          <div><div class="s-n">6</div><div class="s-l">Certs</div></div>
+          <div><div class="s-n">4</div><div class="s-l">Awards</div></div>
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <div class="hero-card hero-card-focus">
+          <div class="card-label">Current focus</div>
+          <h2>Building practical security systems that work in production.</h2>
+          <p>
+            Security controls, cloud reliability, and AI-assisted workflows shaped for real teams.
+          </p>
+        </div>
+        <div class="hero-card hero-card-facts">
+          <div class="card-label">Quick facts</div>
+          <ul>
+            <li>Accenture Security Engineer Intern</li>
+            <li>SMU CS Cybersecurity, Cloud Solutions second major</li>
+            <li>Azure, AWS, Terraform, Python, LLM tooling</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- ── Experience ───────────────────────── -->
+  <div class="sec" id="experience">
+    <div class="sec-title">Experience</div>
+    <div class="tabs">
+      <div class="tb on"  onclick="sw('pw', this)">Work</div>
+      <div class="tb"     onclick="sw('pe', this)">Education</div>
+      <div class="tb"     onclick="sw('pa', this)">Awards</div>
+      <div class="tb"     onclick="sw('pc', this)">Certifications</div>
+    </div>
+
+    <!-- Work -->
+    <div id="pw">
+      <div class="grid2">
+
+        <div class="exp-card" onclick="od('accenture')">
+          <div class="elogo">
+            <img src="assets/accenture.svg" alt="Accenture">
+          </div>
+          <div class="einfo">
+            <div class="eco">Accenture <span class="pill-cur">Current</span></div>
+            <div class="erole">Security Engineer Intern</div>
+            <div class="edate">May 2026 – Present</div>
+          </div>
+        </div>
+
+        <div class="exp-card" onclick="od('ensign')">
+          <div class="elogo">
+            <img src="assets/ensign.png" alt="Ensign InfoSecurity">
+          </div>
+          <div class="einfo">
+            <div class="eco">Ensign InfoSecurity <span class="pill-up">Upcoming</span></div>
+            <div class="erole">Cyber Resilience Lab Intern</div>
+            <div class="edate">Aug – Dec 2026</div>
+          </div>
+        </div>
+
+        <div class="exp-card" onclick="od('inspire')">
+          <div class="elogo">
+            <img src="assets/uvic.png" alt="University of Victoria">
+          </div>
+          <div class="einfo">
+            <div class="eco">INSPIRE · UVic</div>
+            <div class="erole">Software Engineer Intern</div>
+            <div class="edate">Sep – Dec 2025</div>
+          </div>
+        </div>
+
+        <div class="exp-card" onclick="od('iras')">
+          <div class="elogo">
+            <img src="assets/accenture.svg" alt="Accenture">
+          </div>
+          <div class="einfo">
+            <div class="eco">Accenture · IRAS</div>
+            <div class="erole">Application Developer Intern</div>
+            <div class="edate">May – Aug 2025</div>
+          </div>
+        </div>
+
+        <div class="exp-card" onclick="od('dsta')">
+          <div class="elogo">
+            <img src="assets/dsta.jpeg" alt="DSTA">
+          </div>
+          <div class="einfo">
+            <div class="eco">DSTA</div>
+            <div class="erole">Cyber Security Engineer Intern</div>
+            <div class="edate">Sep 2022 – Feb 2023</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div id="pe" style="display:none">
+      <div class="grid2">
+
+        <div class="edu-card">
+          <div class="elogo elogo-light">
+            <img src="assets/smu.svg" alt="SMU">
+          </div>
+          <div>
+            <div class="edu-school-name">Singapore Management University</div>
+            <div class="edu-deg">B.Sc. CS — Cybersecurity · 2nd Major: Cloud Solutions</div>
+            <div class="edu-notes">Whitehat Society · Women in Tech · GIC Sparks Awardee · Ellipsis Code# Top 20</div>
+            <div class="edu-yr-badge">2023 – 2027</div>
+          </div>
+        </div>
+
+        <div class="edu-card">
+          <div class="elogo">
+            <img src="assets/uvic.png" alt="UVic">
+          </div>
+          <div>
+            <div class="edu-school-name">University of Victoria</div>
+            <div class="edu-deg">Exchange — Computer Science</div>
+            <div class="edu-notes">INSPIRE Hackathon — 1st Runner Up</div>
+            <div class="edu-yr-badge">Sep – Dec 2025 · Canada</div>
+            <a class="card-link card-link-inline" href="https://inspireuvic.org/project/bridging-roots-bayside/" target="_blank" rel="noreferrer">Project page ↗</a>
+          </div>
+        </div>
+
+        <div class="edu-card">
+          <div class="elogo elogo-light">
+            <img src="assets/nyp.svg" alt="NYP">
+          </div>
+          <div>
+            <div class="edu-school-name">Nanyang Polytechnic</div>
+            <div class="edu-deg">Diploma in Cybersecurity & Digital Forensics — Merit</div>
+            <div class="edu-notes">DSTA Polytechnic Scholar · Director's List AY2021–23 · GIT × PayPal CTF 1st Runner Up</div>
+            <div class="edu-yr-badge">2020 – 2023</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Awards -->
+    <div id="pa" style="display:none">
+      <div class="grid2">
+        <div class="award-card">
+          <div class="award-logo"><img src="assets/eset.svg" alt="ESET"></div>
+          <div>
+            <div class="award-name">ESET Women in Cybersecurity — Inaugural Winner</div>
+            <div class="award-org">ESET Singapore · 2025</div>
+          </div>
+        </div>
+
+        <div class="award-card">
+          <div class="award-logo"><img src="assets/ensign.png" alt="Ensign InfoSecurity"></div>
+          <div>
+            <div class="award-name">Winning Team — Ensign InfoSecurity Hackathon</div>
+            <div class="award-org">Singapore Defence Tech Summit · 2023</div>
+          </div>
+        </div>
+
+        <div class="award-card">
+          <div class="award-logo"><img src="assets/dsta.jpeg" alt="DSTA"></div>
+          <div>
+            <div class="award-name">Distinction — DSTA Internship Project</div>
+            <div class="award-org">Defence Science & Technology Agency · 2023</div>
+          </div>
+        </div>
+
+        <div class="award-card">
+          <div class="award-logo"><img src="assets/paypal.svg" alt="Girls in Tech x PayPal"></div>
+          <div>
+            <div class="award-name">1st Runner Up — GIT × PayPal CTF</div>
+            <div class="award-org">Girls in Tech × PayPal · 2023</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <div id="pc" style="display:none">
+      <div class="grid2">
+
+        <div class="cert-card">
+          <div class="cert-logo cert-logo-light"><img src="assets/aws.svg" alt="AWS"></div>
+          <div>
+            <div class="cert-name">AWS Solutions Architect – Associate</div>
+            <div class="cert-org">Amazon Web Services</div>
+            <div class="cert-yr">2025</div>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-logo"><img src="assets/eccouncil.png" alt="EC-Council"></div>
+          <div>
+            <div class="cert-name">Certified Ethical Hacker (CEH)</div>
+            <div class="cert-org">EC-Council</div>
+            <div class="cert-yr">2022</div>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-logo"><img src="assets/eccouncil.png" alt="EC-Council"></div>
+          <div>
+            <div class="cert-name">Computer Hacking Forensic Investigator</div>
+            <div class="cert-org">EC-Council</div>
+            <div class="cert-yr">2022</div>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-logo"><img src="assets/google.svg" alt="Google"></div>
+          <div>
+            <div class="cert-name">Google IT Automation with Python</div>
+            <div class="cert-org">Google / Coursera</div>
+            <div class="cert-yr">2023</div>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-logo cert-logo-light"><img src="assets/aws.svg" alt="AWS"></div>
+          <div>
+            <div class="cert-name">AWS Cloud Practitioner</div>
+            <div class="cert-org">Amazon Web Services</div>
+            <div class="cert-yr">2021</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /experience -->
+
+  <!-- ── Projects ──────────────────────────── -->
+  <div class="sec" id="projects">
+    <div class="sec-title">Selected Work</div>
+    <div class="proj-filters">
+      <div class="pf on" onclick="fp('all', this)">All</div>
+      <div class="pf"    onclick="fp('security', this)">Security</div>
+      <div class="pf"    onclick="fp('ai', this)">AI</div>
+      <div class="pf"    onclick="fp('cloud', this)">Cloud</div>
+      <div class="pf"    onclick="fp('hackathon', this)">Hackathon</div>
+    </div>
+
+    <div class="proj-list" id="pl">
+
+      <div class="proj-card" onclick="od('planpilot', this)" data-c="ai hackathon">
+        <div class="proj-img" style="background: linear-gradient(160deg, #0f0c2e, #1e1060, #080520)">
+          <img class="proj-shot" src="assets/PlanPilot.png" alt="PlanPilot AI screenshot">
+          <div class="proj-content">
+            <div class="proj-eyebrow">CWB 2026 · 2nd Place</div>
+            <div class="proj-name">PlanPilot AI</div>
+          </div>
+        </div>
+        <div class="proj-foot">
+          <div class="proj-desc">Agentic project tracker that turns meeting notes and email threads into structured task updates.</div>
+          <div class="proj-meta">
+            <div class="proj-tags">
+              <span class="ptag">Azure AI Foundry</span>
+              <span class="ptag">Cosmos DB</span>
+              <span class="ptag">React</span>
+            </div>
+            <a class="card-link" href="https://www.youtube.com/watch?v=60ltPSRvXE0" target="_blank" rel="noreferrer">Demo video ↗</a>
+          </div>
+          <span class="proj-arr">↗</span>
+        </div>
+      </div>
+
+      <div class="proj-card" onclick="od('vulnscan', this)" data-c="security ai">
+        <div class="proj-img proj-img-shot">
+          <img class="proj-shot" src="assets/vulscan.png" alt="VulnScan analysis screen screenshot">
+          <div class="proj-overlay"></div>
+          <div class="proj-content">
+            <div class="proj-eyebrow">Security · In Development</div>
+            <div class="proj-name">VulnScan</div>
+          </div>
+        </div>
+        <div class="proj-foot">
+          <div class="proj-desc">LLM-powered SAST. Detects OWASP Top 10 with contextual fix suggestions.</div>
+          <div class="proj-tags">
+            <span class="ptag">LLM/AI</span>
+            <span class="ptag">Python</span>
+            <span class="ptag">SAST</span>
+          </div>
+          <span class="proj-arr">↗</span>
+        </div>
+      </div>
+
+      <div class="proj-card" onclick="od('redteam', this)" data-c="security">
+        <div class="proj-img" style="background: linear-gradient(160deg, #041008, #082018, #020808)">
+          <img class="proj-shot" src="assets/IaC.png" alt="IaC screenshot">
+
+          <div class="proj-content">
+            <div class="proj-eyebrow">Security · DSTA</div>
+            <div class="proj-name">Red Team Ops Framework</div>
+          </div>
+        </div>
+        <div class="proj-foot">
+          <div class="proj-desc">Terraform → MITRE ATT&CK attack path generation across 50+ AWS misconfig scenarios.</div>
+          <div class="proj-meta">
+            <div class="proj-tags">
+              <span class="ptag">Python</span>
+              <span class="ptag">Terraform</span>
+              <span class="ptag">MITRE ATT&CK</span>
+            </div>
+            <a class="card-link" href="https://drive.google.com/file/d/1PXTq4Fq0L-1p8jeE7peipD7f7zIGuVcc/view?usp=sharing" target="_blank" rel="noreferrer">Drive link ↗</a>
+          </div>
+          <span class="proj-arr">↗</span>
+        </div>
+      </div>
+
+      <div class="proj-card" onclick="od('cuemaster', this)" data-c="security cloud">
+        <div class="proj-img proj-img-shot">
+          <img class="proj-shot" src="assets/cuemaster.avif" alt="CueMaster login screenshot">
+          <div class="proj-overlay"></div>
+          <div class="proj-content">
+            <div class="proj-eyebrow">CS203 · Lead Developer</div>
+            <div class="proj-name">CueMaster</div>
+          </div>
+        </div>
+        <div class="proj-foot">
+          <div class="proj-desc">9-ball pool management platform with secure auth, session control, and front-end development.</div>
+          <div class="proj-tags">
+            <span class="ptag">Spring Boot</span>
+            <span class="ptag">ReactJS</span>
+            <span class="ptag">TypeScript</span>
+          </div>
+          <span class="proj-arr">↗</span>
+        </div>
+      </div>
+
+      <div class="proj-card" onclick="od('cloudcrm', this)" data-c="cloud security">
+        <div class="proj-img proj-img-shot">
+          <img class="proj-shot" src="assets/Home%20Page.png" alt="Cloud CRM home page screenshot">
+          <div class="proj-overlay"></div>
+          <div class="proj-content">
+            <div class="proj-eyebrow">Cloud · Academic</div>
+            <div class="proj-name">Cloud CRM</div>
+          </div>
+        </div>
+        <div class="proj-foot">
+          <div class="proj-desc">Banking-grade AWS: Cognito OAuth2, API Gateway, Lambda, CI/CD security controls.</div>
+          <div class="proj-tags">
+            <span class="ptag">AWS</span>
+            <span class="ptag">OAuth2</span>
+            <span class="ptag">CI/CD</span>
+          </div>
+          <span class="proj-arr">↗</span>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /projects -->
+
+  <!-- ── Contact ───────────────────────────── -->
+  <div class="contact" id="contact">
+    <h2>Let's talk<br><span>security.</span></h2>
+    <div class="contact-sub">
+      Cloud security, AI security, red team.<br>
+      Currently at Accenture.
+    </div>
+    <div class="contact-links">
+      <a href="mailto:nehars.rs@gmail.com" class="clink">✉ nehars.rs@gmail.com</a>
+      <a href="https://linkedin.com/in/neha-d-o-ram-singasan" class="clink" target="_blank">LinkedIn ↗</a>
+      <a href="https://github.com/nehars17" class="clink" target="_blank">GitHub ↗</a>
+    </div>
+  </div>
+
+  <footer>
+    <span class="ft">© 2026 Neha RS</span>
+    <span class="ft">Singapore</span>
+  </footer>
+
+</div><!-- /page -->
+
+<!-- ── Detail Modal ──────────────────────── -->
+<div class="ov" id="ov">
+  <div class="dbox" id="dbox"></div>
 </div>
 
-<section class="hero">
-  <div class="grid-bg"></div><div class="glow1"></div><div class="glow2"></div>
-  <div class="hero-inner">
-    <div>
-      <div class="eyebrow"><div class="eyebrow-line"></div><div class="eyebrow-text">Security Engineer · Singapore</div></div>
-      <h1><span class="l1">Neha</span><span class="l2">RS</span></h1>
-      <div class="hero-sub"><span id="typing-text"></span><span class="typing-cursor">▋</span></div>
-      <p class="hero-bio">I build <span class="kw">security tools</span>, break systems (legally), and automate <span class="kw">threat detection</span>. Exploring <span class="kw">AI/LLM security</span> and cloud infrastructure — targeting Security Engineer at a product company.</p>
-      <div class="cta-row">
-        <a href="mailto:nehars.rs@gmail.com" class="btn btn-solid">Get in touch →</a>
-        <a href="https://github.com/nehars17" target="_blank" class="btn btn-line">GitHub</a>
-        <a href="http://linkedin.com/in/neha-d-o-ram-singasan" target="_blank" class="btn btn-line">LinkedIn</a>
-      </div>
-    </div>
-    <div class="hero-cards">
-      <div class="hcard c1">
-        <div class="hcard-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
-        <div><div class="hcard-label">Internships</div><div class="hcard-sub">DSTA · Accenture ×2 · INSPIRE · Ensign</div></div>
-      </div>
-      <div class="hcard c2">
-        <div class="hcard-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-        <div class="hcard-num">10+</div>
-        <div><div class="hcard-label">Projects Shipped</div><div class="hcard-sub">Security tools · AI systems · Full-stack</div></div>
-      </div>
-      <div class="hcard c3">
-        <div class="hcard-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-        <div class="hcard-num">6</div>
-        <div><div class="hcard-label">Certifications</div><div class="hcard-sub">AWS SAA · CEH · CHFI · Google</div></div>
-      </div>
-      <div class="hcard c4" style="background:linear-gradient(135deg,rgba(17,26,46,1) 0%,rgba(20,28,52,1) 100%);border-color:rgba(148,184,245,.28);box-shadow:0 0 18px rgba(77,142,240,.07) inset;">
-        <div class="hcard-ico" style="background:rgba(148,184,245,.18);border:1px solid rgba(148,184,245,.32);"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;stroke:var(--purple);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <div class="hcard-num" style="font-family:'Space Mono',monospace;font-size:.9rem;line-height:1.4;min-width:56px;color:var(--purple);letter-spacing:.04em;">ESET<br>SCHOLAR</div>
-        <div><div class="hcard-label" style="color:#c4d8f5;">Inaugural Winner</div><div class="hcard-sub">Women in Cybersecurity · SG 2025</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section class="sec sec-alt" id="exp">
-  <div class="wrap">
-    <div class="sec-hd rv"><div><div class="sec-tag">// work_experience.log</div><h2>Experience</h2></div><div class="sec-n">05</div></div>
-    <div class="exp-list">
-      <div class="exp-row rv">
-        <div><div class="exp-period">May 2026<br>Present</div><span class="badge b-now">Current</span></div>
-        <div>
-          <div class="exp-role">Cloud Security Analyst</div><div class="exp-co">Accenture</div>
-          <ul class="exp-pts">
-            <li>Implementing cloud security controls and identity management using Microsoft Azure and CyberArk</li>
-            <li>Managing container image vulnerability scanning across CI/CD pipelines using Carbon Black</li>
-            <li>Supporting threat analysis and security architecture reviews across enterprise environments</li>
-          </ul>
-          <div class="exp-ts"><span class="etag">Azure</span><span class="etag">CyberArk</span><span class="etag">Carbon Black</span><span class="etag">Docker</span><span class="etag">Vuln Management</span></div>
-        </div>
-      </div>
-      <div class="exp-row rv">
-        <div><div class="exp-period">Aug 2026<br>Dec 2026</div><span class="badge b-up">Upcoming</span></div>
-        <div>
-          <div class="exp-role">Cyber Resilience Lab Intern</div><div class="exp-co">Ensign InfoSecurity</div>
-          <div class="exp-ts"><span class="etag">Cyber Range</span><span class="etag">AI Security</span><span class="etag">SOC Operations</span><span class="etag">Security Testing</span><span class="etag">Lab Operations</span></div>
-        </div>
-      </div>
-      <div class="exp-row rv">
-        <div><div class="exp-period">Sep 2025<br>Dec 2025</div><span class="badge b-past">Internship</span></div>
-        <div>
-          <div class="exp-role">Software Engineer</div><div class="exp-co">INSPIRE · University of Victoria, Canada</div>
-          <ul class="exp-pts">
-            <li>Contributed to BridgingRoots, a SENĆOŦEN Indigenous language-learning platform with real-world community impact</li>
-            <li>Improved backend reliability by optimising containerised services (Docker, MySQL, Nginx) and resolving cross-platform inconsistencies</li>
-            <li>Delivered a production-ready platform through iterative improvements driven by educator and community feedback</li>
-          </ul>
-          <div class="exp-ts"><span class="etag">React</span><span class="etag">Node.js</span><span class="etag">Docker</span><span class="etag">MySQL</span><span class="etag">Nginx</span></div>
-        </div>
-      </div>
-      <div class="exp-row rv">
-        <div><div class="exp-period">May 2025<br>Aug 2025</div><span class="badge b-past">Internship</span></div>
-        <div>
-          <div class="exp-role">Application Developer</div><div class="exp-co">Accenture · Client: IRAS</div>
-          <ul class="exp-pts">
-            <li>Resolved production data inconsistencies across ETL pipelines in Singapore's national tax system</li>
-            <li>Debugged and monitored Azure Data Factory workflows, identifying pipeline failures and optimising data flow</li>
-            <li>Supported backend stability through code fixes and root cause analysis in live production environments</li>
-          </ul>
-          <div class="exp-ts"><span class="etag">Azure Data Factory</span><span class="etag">ETL</span><span class="etag">Python</span><span class="etag">CI/CD</span></div>
-        </div>
-      </div>
-      <div class="exp-row rv">
-        <div><div class="exp-period">Sep 2022<br>Feb 2023</div><span class="badge b-past">Internship</span></div>
-        <div>
-          <div class="exp-role">Cyber Security Engineer</div><div class="exp-co">DSTA · Defence Science & Technology Agency</div>
-          <ul class="exp-pts">
-            <li>Built an automated red team tool analysing Terraform configs to generate attack paths across 50+ cloud misconfiguration scenarios</li>
-            <li>Deployed vulnerable AWS environments via IaC to model real-world exploit chains mapped to MITRE ATT&CK</li>
-            <li>Awarded Distinction for internship project performance</li>
-          </ul>
-          <div class="exp-ts"><span class="etag">Terraform</span><span class="etag">AWS</span><span class="etag">MITRE ATT&CK</span><span class="etag">Python</span><span class="etag">Red Team</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section class="sec" id="proj">
-  <div class="wrap">
-    <div class="sec-hd rv"><div><div class="sec-tag">// ls projects/</div><h2>Selected Work</h2></div><div class="sec-n">10</div></div>
-    <div class="proj-grid">
-      <div class="pcard feat rv">
-        <div class="pcard-top">
-          <div class="pico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
-          <div class="pmeta"><span class="pyear">2026</span><span class="ptyp t-feat">Featured</span></div>
-        </div>
-        <div class="pname">SmartCater — AI Multi-Agent Catering Platform</div>
-        <div class="porg">CWB Hackathon 2026</div>
-        <p class="pdesc">Six-agent AI orchestration system that generates comprehensive catering plans in seconds. RAG-powered menu planning, real-time risk detection, and automatic replanning using Azure AI Foundry and ChromaDB.</p>
-        <div class="ptags"><span class="ptag">Multi-Agent AI</span><span class="ptag">RAG</span><span class="ptag">FastAPI</span><span class="ptag">Azure AI Foundry</span><span class="ptag">ChromaDB</span><span class="ptag">React</span></div>
-        <a href="https://github.com/nehars17" target="_blank" class="plink">View on GitHub <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-      <div class="pcard rv">
-        <div class="pcard-top">
-          <div class="pico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-          <div class="pmeta"><span class="pyear">2026</span><span class="ptyp t-feat">Featured</span></div>
-        </div>
-        <div class="pname">PlanPilot AI — Multi-Agent Project Tracker</div>
-        <div class="porg">CWB Hackathon 2026</div>
-        <p class="pdesc">Converts unstructured meeting notes into structured task updates. Human-in-the-loop approval, Azure Cosmos DB, Gantt view, and RBAC.</p>
-        <div class="ptags"><span class="ptag">Azure AI Foundry</span><span class="ptag">Cosmos DB</span><span class="ptag">Flask</span><span class="ptag">React/TS</span></div>
-        <a href="https://github.com/nehars17/PlanPilot-AI" target="_blank" class="plink">View on GitHub <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-      <div class="pcard psec rv">
-        <div class="pcard-top">
-          <div class="pico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
-          <div class="pmeta"><span class="pyear">2026</span><span class="ptyp t-sec">Security</span></div>
-        </div>
-        <div class="pname">VulnScan — LLM-Powered Code Auditor</div>
-        <div class="porg">Personal Project · In Development</div>
-        <p class="pdesc">Web-based SAST tool using LLMs for semantic source code analysis. Detects all OWASP Top 10 vulnerabilities with contextual fix suggestions.</p>
-        <div class="ptags"><span class="ptag">LLM/AI</span><span class="ptag">Python</span><span class="ptag">SAST</span><span class="ptag">OWASP Top 10</span></div>
-        <span class="plink" style="color:var(--text3);cursor:default;">In Development — Repo private</span>
-      </div>
-      <div class="pcard psec rv">
-        <div class="pcard-top">
-          <div class="pico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <div class="pmeta"><span class="pyear">2022–23</span><span class="ptyp t-sec">Security</span></div>
-        </div>
-        <div class="pname">Automated Red Team Ops Framework</div>
-        <div class="porg">DSTA</div>
-        <p class="pdesc">Red team simulation using Terraform IaC mapped to MITRE ATT&CK. Analyses cloud infrastructure scripts and generates attack paths for AWS.</p>
-        <div class="ptags"><span class="ptag">Python</span><span class="ptag">Terraform</span><span class="ptag">AWS</span><span class="ptag">MITRE ATT&CK</span></div>
-      </div>
-      <div class="pcard psec rv">
-        <div class="pcard-top">
-          <div class="pico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-          <div class="pmeta"><span class="pyear">2026</span><span class="ptyp t-sec">Security</span></div>
-        </div>
-        <div class="pname">Red Team Attack Lab</div>
-        <div class="porg">Academic · SMU</div>
-        <p class="pdesc">Enterprise adversary simulation from initial access to domain dominance. APT chains, privilege escalation, lateral movement, and EDR/AV evasion.</p>
-        <div class="ptags"><span class="ptag">Active Directory</span><span class="ptag">Kali Linux</span><span class="ptag">EDR Evasion</span></div>
-        <span class="plink" style="color:var(--text3);cursor:default;">Academic — Repo private</span>
-      </div>
-      <div class="pcard rv">
-        <div class="pcard-top">
-          <div class="pico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-          <div class="pmeta"><span class="pyear">2025</span><span class="ptyp t-dim">Academic</span></div>
-        </div>
-        <div class="pname">BridgingRoots — Indigenous Edu Platform</div>
-        <div class="porg">UVic INSPIRE</div>
-        <p class="pdesc">Gamified SENĆOŦEN language-learning platform with RBAC, secure auth, and school district identity integration.</p>
-        <div class="ptags"><span class="ptag">React</span><span class="ptag">Node.js</span><span class="ptag">Docker</span><span class="ptag">RBAC</span></div>
-        <a href="https://inspireuvic.org/project/bridging-roots-bayside/" target="_blank" class="plink">View Project <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-      <div class="pcard rv">
-        <div class="pcard-top">
-          <div class="pico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
-          <div class="pmeta"><span class="pyear">2025</span><span class="ptyp t-dim">Academic</span></div>
-        </div>
-        <div class="pname">Cloud CRM — Banking Architecture</div>
-        <div class="porg">Academic · AWS</div>
-        <p class="pdesc">Cloud-hosted banking CRM with AWS Cognito OAuth2, API Gateway, Lambda, and automated CI/CD with full security controls.</p>
-        <div class="ptags"><span class="ptag">AWS</span><span class="ptag">Flask</span><span class="ptag">OAuth2</span><span class="ptag">CI/CD</span></div>
-        <span class="plink" style="color:var(--text3);cursor:default;">Academic — Repo private</span>
-      </div>
-      <div class="pcard psec rv">
-        <div class="pcard-top">
-          <div class="pico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6l10.5 6L22 6"/><path d="M1 6v12l10.5 6L22 18V6"/></svg></div>
-          <div class="pmeta"><span class="pyear">2026</span><span class="ptyp t-sec">Security</span></div>
-        </div>
-        <div class="pname">Cyber Threat Intelligence</div>
-        <div class="porg">Academic · SMU</div>
-        <p class="pdesc">APT28 and APT29 TTP mapping to MITRE ATT&CK. Analysis of supply chain attacks and zero-day chains using the Diamond Model.</p>
-        <div class="ptags"><span class="ptag">MITRE ATT&CK</span><span class="ptag">Threat Intel</span><span class="ptag">Diamond Model</span></div>
-        <span class="plink" style="color:var(--text3);cursor:default;">Academic — Repo private</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section class="sec sec-alt" id="skills">
-  <div class="wrap">
-    <div class="sec-hd rv"><div><div class="sec-tag">// cat skills.json</div><h2>Skills</h2></div><div class="sec-n">06</div></div>
-    <div class="sk-grid">
-      <div class="sk-group rv">
-        <div class="sk-title"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Cybersecurity</div>
-        <div class="sk-pills"><span class="sk-pill">Digital Forensics</span><span class="sk-pill">Incident Response</span><span class="sk-pill">Web App Security</span><span class="sk-pill">OWASP Top 10</span><span class="sk-pill">Blue Team / SOC</span><span class="sk-pill">AI/LLM Security</span><span class="sk-pill">Threat Hunting</span><span class="sk-pill">Vuln Assessment</span><span class="sk-pill">Red Team Automation</span><span class="sk-pill">Secure SDLC</span><span class="sk-pill">DevSecOps</span></div>
-      </div>
-      <div class="sk-group rv">
-        <div class="sk-title"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>Cloud & DevOps</div>
-        <div class="sk-pills"><span class="sk-pill">AWS EC2/S3/IAM</span><span class="sk-pill">Azure App Services</span><span class="sk-pill">Azure AD</span><span class="sk-pill">CyberArk</span><span class="sk-pill">Carbon Black</span><span class="sk-pill">Docker</span><span class="sk-pill">Terraform</span><span class="sk-pill">CI/CD Pipelines</span><span class="sk-pill">Azure DevOps</span></div>
-      </div>
-      <div class="sk-group rv">
-        <div class="sk-title"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>AI & Agentic</div>
-        <div class="sk-pills"><span class="sk-pill">Multi-Agent Systems</span><span class="sk-pill">RAG</span><span class="sk-pill">Azure AI Foundry</span><span class="sk-pill">ChromaDB</span><span class="sk-pill">LLM Integration</span><span class="sk-pill">Prompt Engineering</span><span class="sk-pill">AI Security</span></div>
-      </div>
-      <div class="sk-group rv">
-        <div class="sk-title"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Programming</div>
-        <div class="sk-pills"><span class="sk-pill">Python</span><span class="sk-pill">Java</span><span class="sk-pill">JavaScript</span><span class="sk-pill">TypeScript</span><span class="sk-pill">SQL</span><span class="sk-pill">Bash</span><span class="sk-pill">PHP</span></div>
-      </div>
-      <div class="sk-group rv">
-        <div class="sk-title"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Frameworks</div>
-        <div class="sk-pills"><span class="sk-pill">React.js</span><span class="sk-pill">Node.js</span><span class="sk-pill">FastAPI</span><span class="sk-pill">Flask</span><span class="sk-pill">Spring Boot</span><span class="sk-pill">Nginx</span><span class="sk-pill">Git</span></div>
-      </div>
-      <div class="sk-group rv">
-        <div class="sk-title"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Security Tools</div>
-        <div class="sk-pills"><span class="sk-pill">Burp Suite</span><span class="sk-pill">Wireshark</span><span class="sk-pill">Metasploit</span><span class="sk-pill">Splunk SOAR</span><span class="sk-pill">Nmap</span><span class="sk-pill">Scapy</span><span class="sk-pill">Kali Linux</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- EDUCATION -->
-<section class="sec" id="edu">
-  <div class="wrap">
-    <div class="sec-hd rv"><div><div class="sec-tag">// education.db</div><h2>Education</h2></div><div class="sec-n">03</div></div>
-    <div class="edu-grid">
-      <div class="edu-card rv">
-        <div class="edu-school">Singapore Management University</div>
-        <div class="edu-deg">B.Sc. Computer Science — Cybersecurity</div>
-        <div class="edu-yr">2023 – 2027 · 2nd Major: Digitalisation & Cloud Solutions</div>
-        <div class="edu-pts">
-          <div class="edu-pt">GIC Sparks & Smiles Awardee (2023)</div>
-          <div class="edu-pt">SMU Ellipsis Code# 2025 — Top 20 (13th place)</div>
-          <div class="edu-pt">Whitehat Society · Women in Tech · SMUBIA</div>
-        </div>
-      </div>
-      <div class="edu-card rv">
-        <div class="edu-school">University of Victoria</div>
-        <div class="edu-deg">Exchange — Computer Science</div>
-        <div class="edu-yr">Sep – Dec 2025 · Victoria, BC, Canada</div>
-        <div class="edu-pts">
-          <div class="edu-pt">INSPIRE Hackathon Series — 1st Runner Up</div>
-          <div class="edu-pt">Community-engaged software engineering</div>
-        </div>
-      </div>
-      <div class="edu-card rv">
-        <div class="edu-school">Nanyang Polytechnic</div>
-        <div class="edu-deg">Diploma in Cybersecurity & Digital Forensics</div>
-        <div class="edu-yr">2020 – 2023 · Graduated with Merit</div>
-        <div class="edu-pts">
-          <div class="edu-pt">DSTA Polytechnic Digital Scholar</div>
-          <div class="edu-pt">NYP Scholar · Director's List — AY2021, 2022, 2023</div>
-          <div class="edu-pt">GIT × PayPal CTF — 1st Runner Up (2023)</div>
-        </div>
-      </div>
-    </div>
-    <div class="ca-grid rv">
-      <div>
-        <div class="ca-title"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Certifications</div>
-        <div class="ci-list">
-          <div class="ci"><div class="ci-ico aws"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div><div class="ci-info"><div class="ci-name">AWS Certified Solutions Architect – Associate</div><div class="ci-iss">Amazon Web Services</div></div><div class="ci-yr">2025</div></div>
-          <div class="ci"><div class="ci-ico ec"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="ci-info"><div class="ci-name">Certified Ethical Hacker (CEH)</div><div class="ci-iss">EC-Council</div></div><div class="ci-yr">2022</div></div>
-          <div class="ci"><div class="ci-ico ec"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div><div class="ci-info"><div class="ci-name">Computer Hacking Forensic Investigator (CHFI)</div><div class="ci-iss">EC-Council</div></div><div class="ci-yr">2022</div></div>
-          <div class="ci"><div class="ci-ico gl"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div class="ci-info"><div class="ci-name">Google IT Automation with Python</div><div class="ci-iss">Google / Coursera</div></div><div class="ci-yr">2023</div></div>
-          <div class="ci"><div class="ci-ico aws"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div><div class="ci-info"><div class="ci-name">AWS Certified Cloud Practitioner</div><div class="ci-iss">Amazon Web Services</div></div><div class="ci-yr">2021</div></div>
-        </div>
-      </div>
-      <div>
-        <div class="ca-title"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>Awards & Achievements</div>
-        <div class="ci-list">
-          <div class="ci"><div class="ci-ico sp"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="ci-info"><div class="ci-name">ESET Women in Cybersecurity — Inaugural Winner</div><div class="ci-iss">ESET Singapore · 2025</div></div></div>
-          <div class="ci"><div class="ci-ico aw"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg></div><div class="ci-info"><div class="ci-name">Winning Team — Ensign InfoSecurity Hackathon</div><div class="ci-iss">Singapore Defence Tech Summit · 2023</div></div></div>
-          <div class="ci"><div class="ci-ico aw"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><div class="ci-info"><div class="ci-name">Distinction — DSTA Internship Project</div><div class="ci-iss">Defence Science & Technology Agency · 2023</div></div></div>
-          <div class="ci"><div class="ci-ico sl"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ci-info"><div class="ci-name">1st Runner Up — GIT × PayPal CTF</div><div class="ci-iss">Girls in Tech × PayPal · 2023</div></div></div>
-          <div class="ci"><div class="ci-ico sl"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ci-info"><div class="ci-name">2nd Runner Up — AWS AI/ML Challenge</div><div class="ci-iss">Singapore Defence Tech Summit · 2023</div></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="sec sec-alt" id="contact">
-  <div class="wrap">
-    <div class="sec-hd rv"><div><div class="sec-tag">// ./contact.sh</div><h2>Get In Touch</h2></div></div>
-    <div class="ct-wrap">
-      <div class="rv">
-        <h3>Let's build something<br><span>secure.</span></h3>
-        <p>Open to Security Engineer roles and research collaborations in cloud security and AI security. Currently at Accenture — available from early 2027.</p>
-        <div class="ct-quote">"Securing the digital frontier,<br>one packet at a time."</div>
-      </div>
-      <div class="ct-links rv">
-        <a href="mailto:nehars.rs@gmail.com" class="ct-link" id="email-btn">
-          <div class="ct-link-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-          <div><div class="ct-link-lbl">Email</div><div class="ct-link-val">nehars.rs@gmail.com</div></div>
-        </a>
-        <a href="http://linkedin.com/in/neha-d-o-ram-singasan" target="_blank" class="ct-link">
-          <div class="ct-link-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
-          <div><div class="ct-link-lbl">LinkedIn</div><div class="ct-link-val">neha-d-o-ram-singasan</div></div>
-        </a>
-        <a href="https://github.com/nehars17" target="_blank" class="ct-link">
-          <div class="ct-link-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
-          <div><div class="ct-link-lbl">GitHub</div><div class="ct-link-val">github.com/nehars17</div></div>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="fl"><span>NRS</span>:// © 2026 Neha RS</div>
-  <div class="fr" style="display:flex;align-items:center;gap:.6rem;font-family:'Space Mono',monospace;font-size:.62rem;color:var(--text3);"><span style="width:5px;height:5px;background:var(--accent2);border-radius:50%;display:inline-block;opacity:.7;"></span>Available from early 2027 · Singapore</div>
-</footer>
-
-<script>
-const ham=document.getElementById('hamburger'),mob=document.getElementById('mobile-menu');
-ham?.addEventListener('click',()=>{ham.classList.toggle('open');mob.classList.toggle('open');});
-function closeMobile(){ham.classList.remove('open');mob.classList.remove('open');}
-const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx-3+'px';cur.style.top=my-3+'px';});
-(function a(){rx+=(mx-rx-14)*.1;ry+=(my-ry-14)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(a);})();
-document.querySelectorAll('a,button').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.transform='scale(2.5)';ring.style.transform='scale(1.4)';ring.style.borderColor='rgba(77,142,240,.7)';});
-  el.addEventListener('mouseleave',()=>{cur.style.transform='scale(1)';ring.style.transform='scale(1)';ring.style.borderColor='rgba(77,142,240,.35)';});
-});
-const obs=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.08,rootMargin:'0px 0px -20px 0px'});
-document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%5)*.07+'s';obs.observe(el);});
-const secs=document.querySelectorAll('section[id]'),nls=document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll',()=>{let c='';secs.forEach(s=>{if(window.scrollY>=s.offsetTop-130)c=s.id;});nls.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+c?'var(--accent)':'';});});
-document.getElementById('email-btn')?.addEventListener('click',async e=>{e.preventDefault();try{await navigator.clipboard.writeText('nehars.rs@gmail.com');}catch{}const v=e.currentTarget.querySelector('.ct-link-val');const p=v.textContent;v.textContent='Copied!';setTimeout(()=>v.textContent=p,1500);});
-// Typing effect
-const typingEl=document.getElementById('typing-text');
-const typingStr='CS @ SMU · Cybersecurity';
-let ti=0;
-function typeChar(){if(ti<=typingStr.length){typingEl.textContent=typingStr.slice(0,ti);ti++;setTimeout(typeChar,ti===1?600:55+(Math.random()*40));}};
-setTimeout(typeChar,400);
-</script>
+<script src="js/main.js"></script>
 </body>
 </html>
