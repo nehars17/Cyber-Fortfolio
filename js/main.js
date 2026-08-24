@@ -10,28 +10,28 @@ const DATA = {
     title: 'Accenture',
     sub: 'Cloud Security Analyst',
     meta: ['May 2026 – Present', 'Singapore'],
-    body: 'Implementing cloud security controls and identity management across enterprise environments using Microsoft Azure and CyberArk.',
+    body: 'Securing cloud infrastructure and identity systems across enterprise Azure environments.',
     tech: ['Azure', 'CyberArk', 'Carbon Black', 'Docker', 'Vulnerability Management'],
-    bullets: [
-      'Built a container vulnerability scanning pipeline using Docker Scout and Trivy across 5 production images; mapped CVEs via the Ubuntu Security API and coordinated remediation with infrastructure and application teams.',
-      'Developed a CIS Ubuntu 22.04 hardening script remediating 308 security controls across SSH, PAM, AppArmor, kernel modules, and logging on Azure production VMs.',
-      'Collaborated with Pen Testing Team to remediate identified vulnerabilities in the enterprise environment.',
-      'Supported secure deployment of an Accenture in-house AI platform in a Singapore government tax environment (IRAS), ensuring compliance with enterprise security standards.'
-    ],
+     bullets: [
+     'Built an automated container vulnerability scanning pipeline (Docker Scout + Trivy) across 5 production images, mapping CVEs to the Ubuntu Security API and driving remediation with infrastructure and application teams.',
+     'Wrote a CIS Ubuntu 22.04 hardening script covering 308 controls (SSH, PAM, AppArmor, kernel modules, logging), deployed across Azure production VMs.',
+     'Partnered with the Pen Testing team to triage and remediate vulnerabilities found in enterprise environment assessments.',
+     'Secured the deployment of an AI platform in a government environment, aligning configuration and access controls with enterprise compliance standards.'
+   ],
   },
-  ensign: {
-    logo: 'assets/ensign.svg',
-    title: 'Ensign InfoSecurity',
-    sub: 'Cyber Resilience Lab Intern · Upcoming',
-    meta: ['Aug – Dec 2026', 'Singapore'],
-    body: "Upcoming role within Ensign's Cyber Resilience Lab — Singapore's leading cybersecurity firm.",
-    tech: ['Cyber Range', 'AI Security', 'SOC Operations', 'Security Testing'],
-    bullets: [
-      'Cyber range operations and adversary simulation',
-      'AI security research and applied lab operations',
-      'SOC operations and incident response',
-    ],
-  },
+  // ensign: {
+  //   logo: 'assets/ensign.svg',
+  //   title: 'Ensign InfoSecurity',
+  //   sub: 'Cyber Resilience Lab Intern · Upcoming',
+  //   meta: ['Aug – Dec 2026', 'Singapore'],
+  //   body: "Upcoming role within Ensign's Cyber Resilience Lab — Singapore's leading cybersecurity firm.",
+  //   tech: ['Cyber Range', 'AI Security', 'SOC Operations', 'Security Testing'],
+  //   bullets: [
+  //     'Cyber range operations and adversary simulation',
+  //     'AI security research and applied lab operations',
+  //     'SOC operations and incident response',
+  //   ],
+  // },
   inspire: {
     logo: 'assets/uvic.svg',
     title: 'INSPIRE · University of Victoria',
